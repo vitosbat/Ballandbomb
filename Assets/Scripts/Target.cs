@@ -27,11 +27,6 @@ public class Target : MonoBehaviour
         transform.position = RandomSpawnPos();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnMouseDown()
     {
@@ -60,12 +55,10 @@ public class Target : MonoBehaviour
     float RandomTorque()
 	{
         return Random.Range(-maxTorque, maxTorque);
-
     }
 
     Vector3 RandomSpawnPos()
 	{
         return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), ySpawnPos);
-
     }
 }

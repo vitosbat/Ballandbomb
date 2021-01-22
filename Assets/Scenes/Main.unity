@@ -1199,12 +1199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2117122160}
   gameOverText: {fileID: 132350317}
+  titleScreen: {fileID: 750216997}
   targets:
   - {fileID: 5261702273127461064, guid: f311535a7cfdbd044afada7760f2e1c3, type: 3}
   - {fileID: 7856710110295550595, guid: 5faaa923136b5fe4391ea9c62804bc91, type: 3}
   - {fileID: 5515132702819403621, guid: 4976ac8f9cb078e4aac0b21b75245f7d, type: 3}
   - {fileID: 8986078441315111235, guid: c9107eaa6846d7a4ebd6ddf5a21e5557, type: 3}
-  titleScreen: {fileID: 750216997}
   isGameActive: 0
   restartButton: {fileID: 391486978}
 --- !u!4 &1308055416
@@ -1306,7 +1306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611319330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1468,7 +1468,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
