@@ -34,7 +34,7 @@ public class Target : MonoBehaviour
 		{
             Destroy(gameObject);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-            gameManager.UpdateScore(pointValue );
+            gameManager.UpdateScore(pointValue);
 
 		}
     }
@@ -44,8 +44,9 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
         if (!gameObject.CompareTag("Bad Target"))
 		{
-            gameManager.GameOver();
-		}
+            Destroy(gameObject);
+            gameManager.UpdateScore(-pointValue);
+        }
 	}
 
 	Vector3 RandomForce()

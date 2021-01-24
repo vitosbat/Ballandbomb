@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public GameObject titleScreen;
+    public GameObject sensor;
     public List<GameObject> targets;
     public bool isGameActive;
     public Button restartButton;
@@ -32,11 +33,22 @@ public class GameManager : MonoBehaviour
 	{
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+        if (score >= 100)
+		{
+            Debug.Log("You win!");
+            GameOver();
+        }
+        else if (score <= -100)
+		{
+            Debug.Log("You lose, but not loser)");
+            GameOver();
+		}
     }
 
     public void GameOver()
 	{
         isGameActive = false;
+        sensor.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
     }

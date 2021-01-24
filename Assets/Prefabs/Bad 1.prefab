@@ -142,10 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafefe0d8c40b5945ac5d1a470dddbcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: -15
+  pointValue: -50
   explosionParticle: {fileID: 4758139293545943008, guid: 7873b898310b3b9428a3ffcbf2e89e04,
     type: 3}
-  destroyAudio: {fileID: 82477607071537808}
 --- !u!82 &82477607071537808
 AudioSource:
   m_ObjectHideFlags: 0
