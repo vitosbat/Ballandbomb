@@ -7,64 +7,73 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private float spawnRate = 1.0f;
-    private int score;
+	private float spawnRate = 1.0f;
+	private int score;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public GameObject titleScreen;
-    public GameObject sensor;
-    public List<GameObject> targets;
-    public bool isGameActive;
-    public Button restartButton;
+	public TextMeshProUGUI scoreText;
+	public TextMeshProUGUI gameOverText;
+	public GameObject titleScreen;
+	public GameObject sensor;
+	public List<GameObject> targets;
+	public bool isGameActive;
+	public Button restartButton;
 
 
-    public void StartGame(int difficulty)
+	public void StartGame(int difficulty)
 	{
-        isGameActive = true;
-        titleScreen.SetActive(false);
-        spawnRate /= difficulty;
-        StartCoroutine(SpawnTarget());
-        score = 0;
-        UpdateScore(0);
+		isGameActive = true;
+		titleScreen.SetActive(false);
+		spawnRate /= difficulty;
+		StartCoroutine(SpawnTarget());
+		score = 0;
+		UpdateScore(0);
 	}
 
-    public void UpdateScore(int scoreToAdd)
+	public void UpdateScore(int scoreToAdd)
 	{
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
-        if (score >= 100)
+		score += scoreToAdd;
+		scoreText.text = "Score: " + score;
+		if (score >= 100)
 		{
-            Debug.Log("You win!");
-            GameOver();
-        }
-        else if (score <= -100)
-		{
-            Debug.Log("You lose, but not loser)");
-            GameOver();
+			GameOver(true);
 		}
-    }
-
-    public void GameOver()
-	{
-        isGameActive = false;
-        sensor.gameObject.SetActive(false);
-        restartButton.gameObject.SetActive(true);
-        gameOverText.gameObject.SetActive(true);
-    }
-
-    public void ReloadGame()
-	{
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		else if (score <= -100)
+		{
+			GameOver(false);
+		}
 	}
-    	
+
+	public void GameOver(bool isWin)
+	{
+		isGameActive = false;
+		sensor.gameObject.SetActive(false);
+
+		gameOverText.gameObject.SetActive(true);
+
+		if (isWin)
+		{
+			gameOverText.SetText("Congratulation!\n You win!");
+		}
+		else
+		{
+			gameOverText.SetText("Lost\n Try again...");
+		}
+
+		restartButton.gameObject.SetActive(true);
+	}
+
+	public void ReloadGame()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
 	IEnumerator SpawnTarget()
 	{
-        while (isGameActive)
+		while (isGameActive)
 		{
-            yield return new WaitForSeconds(spawnRate);
-            int targetIndex = Random.Range(0, targets.Count);
-            Instantiate(targets[targetIndex]);
+			yield return new WaitForSeconds(spawnRate);
+			int targetIndex = Random.Range(0, targets.Count);
+			Instantiate(targets[targetIndex]);
 		}
 	}
 }
