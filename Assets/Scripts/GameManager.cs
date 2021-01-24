@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 	public TextMeshProUGUI scoreText;
 	public TextMeshProUGUI gameOverText;
 	public GameObject titleScreen;
+	public Slider lifeSlider;
 	public GameObject sensor;
 	public List<GameObject> targets;
 	public bool isGameActive;
@@ -27,13 +28,15 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(SpawnTarget());
 		score = 0;
 		UpdateScore(0);
+		lifeSlider.value = score;
 	}
 
 	public void UpdateScore(int scoreToAdd)
 	{
 		score += scoreToAdd;
 		scoreText.text = "Score: " + score;
-		if (score >= 100)
+		lifeSlider.value = score;
+		if (score >= 200)
 		{
 			GameOver(true);
 		}
