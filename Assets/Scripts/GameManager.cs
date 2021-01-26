@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(SpawnTarget());
 		score = 0;
 		UpdateScore(0);
+		lifeSlider.gameObject.SetActive(true);
 		lifeSlider.value = score;
 	}
 
