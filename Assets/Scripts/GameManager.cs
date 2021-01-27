@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 	private float spawnRate = 1.0f;
 	private int score;
 
-	public TextMeshProUGUI scoreText;
 	public TextMeshProUGUI gameOverText;
 	public GameObject titleScreen;
 	public Slider lifeSlider;
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour
 	public void UpdateScore(int scoreToAdd)
 	{
 		score += scoreToAdd;
-		scoreText.text = "Score: " + score;
 		lifeSlider.value = score;
 		if (score >= 200)
 		{
@@ -56,7 +54,7 @@ public class GameManager : MonoBehaviour
 
 		if (isWin)
 		{
-			gameOverText.SetText("Congratulation!\n You win!");
+			gameOverText.SetText("Congratulations!\n You win!");
 		}
 		else
 		{
