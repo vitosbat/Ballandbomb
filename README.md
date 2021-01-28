@@ -1,8 +1,8 @@
 
-![Logo.png](https://github.com/vitosbat/ballandbomb/blob/main/Assets/Sprites/logo.png?raw=true)
+![Logo.png](https://github.com/vitosbat/ballandbomb/blob/main/Assets/Sprites/logo.png?raw=true){width = 50%}
 
-### "Ball'n'bomb" is a wonderful clicker game.
+### "Ball'n'bomb" is a prototype of the clicker game.
 
-Please enjoy its gameplay [here.](https://vitosbat.itch.io/ballnbomb)
+You can test its gameplay [here.](https://vitosbat.itch.io/ballnbomb)
 
 
