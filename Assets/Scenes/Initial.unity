@@ -164,10 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e00d32e481177245bfb7081fb24ab27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverText: {fileID: 0}
-  titleScreen: {fileID: 0}
-  lifeSlider: {fileID: 0}
-  sensor: {fileID: 0}
-  targets: []
-  isGameActive: 0
-  restartButton: {fileID: 0}
+  initialPrefabs:
+  - {fileID: 2818665970966202886, guid: afeaa0f331fcb844fae4333ce4c564c2, type: 3}
