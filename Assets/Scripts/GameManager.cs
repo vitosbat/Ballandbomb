@@ -1,81 +1,131 @@
-﻿using System.Collections;
+﻿//using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-	private float spawnRate = 1.0f;
-	private int score;
-
-	public TextMeshProUGUI gameOverText;
-	public GameObject titleScreen;
-	public Slider lifeSlider;
-	public GameObject sensor;
-	public List<GameObject> targets;
-	public bool isGameActive;
-	public Button restartButton;
+	public GameObject[] initialPrefabs;
+	private List<GameObject> _instancedInitialPrefabs;
 
 
-	public void StartGame(int difficulty)
+	private void Start()
 	{
-		isGameActive = true;
-		titleScreen.SetActive(false);
-		spawnRate /= difficulty;
-		StartCoroutine(SpawnTarget());
-		score = 0;
-		UpdateScore(0);
-		lifeSlider.gameObject.SetActive(true);
-		lifeSlider.value = score;
+		DontDestroyOnLoad(gameObject);
+
+		_instancedInitialPrefabs = new List<GameObject>();
+
+		InstantiateInitialPrefabs();
+
+
 	}
 
-	public void UpdateScore(int scoreToAdd)
+	private void InstantiateInitialPrefabs()
 	{
-		score += scoreToAdd;
-		lifeSlider.value = score;
-		if (score >= 200)
+		GameObject prefabInstance;
+		
+		for (int i = 0; i < initialPrefabs.Length; i++)
 		{
-			GameOver(true);
-		}
-		else if (score <= -100)
-		{
-			GameOver(false);
+			prefabInstance = Instantiate(initialPrefabs[i]);
+			_instancedInitialPrefabs.Add(prefabInstance);
 		}
 	}
 
-	public void GameOver(bool isWin)
+	protected override void OnDestroy()
 	{
-		isGameActive = false;
-		sensor.gameObject.SetActive(false);
+		base.OnDestroy();
 
-		gameOverText.gameObject.SetActive(true);
-
-		if (isWin)
+		for (int i = 0; i < _instancedInitialPrefabs.Count; i++)
 		{
-			gameOverText.SetText("Congratulations!\n You win!");
-		}
-		else
-		{
-			gameOverText.SetText("Lost\n Try again...");
+			Destroy(_instancedInitialPrefabs[i]);
 		}
 
-		restartButton.gameObject.SetActive(true);
+		_instancedInitialPrefabs.Clear();
 	}
 
-	public void ReloadGame()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
-
-	IEnumerator SpawnTarget()
-	{
-		while (isGameActive)
-		{
-			yield return new WaitForSeconds(spawnRate);
-			int targetIndex = Random.Range(0, targets.Count);
-			Instantiate(targets[targetIndex]);
-		}
-	}
 }
+
+
+
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using TMPro;				
+//using UnityEngine.SceneManagement;
+//using UnityEngine.UI;
+
+//public class GameManager : MonoBehaviour
+//{
+//	private float spawnRate = 1.0f;
+//	private int score;
+
+//	public TextMeshProUGUI gameOverText;
+//	public GameObject titleScreen;
+//	public Slider lifeSlider;
+//	public GameObject sensor;
+//	public List<GameObject> targets;
+//	public bool isGameActive;
+//	public Button restartButton;
+
+
+//	public void StartGame(int difficulty)
+//	{
+//		isGameActive = true;
+//		titleScreen.SetActive(false);
+//		spawnRate /= difficulty;
+//		StartCoroutine(SpawnTarget());
+//		score = 0;
+//		UpdateScore(0);
+//		lifeSlider.gameObject.SetActive(true);
+//		lifeSlider.value = score;
+//	}
+
+//	public void UpdateScore(int scoreToAdd)
+//	{
+//		score += scoreToAdd;
+//		lifeSlider.value = score;
+//		if (score >= 200)
+//		{
+//			GameOver(true);
+//		}
+//		else if (score <= -100)
+//		{
+//			GameOver(false);
+//		}
+//	}
+
+//	public void GameOver(bool isWin)
+//	{
+//		isGameActive = false;
+//		sensor.gameObject.SetActive(false);
+
+//		gameOverText.gameObject.SetActive(true);
+
+//		if (isWin)
+//		{
+//			gameOverText.SetText("Congratulations!\n You win!");
+//		}
+//		else
+//		{
+//			gameOverText.SetText("Lost\n Try again...");
+//		}
+
+//		restartButton.gameObject.SetActive(true);
+//	}
+
+//	public void ReloadGame()
+//	{
+//		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//	}
+
+//	IEnumerator SpawnTarget()
+//	{
+//		while (isGameActive)
+//		{
+//			yield return new WaitForSeconds(spawnRate);
+//			int targetIndex = Random.Range(0, targets.Count);
+//			Instantiate(targets[targetIndex]);
+//		}
+//	}
+//}
