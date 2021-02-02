@@ -6,6 +6,15 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL}
+
+	GameState _currentGameState = GameState.START;
+	public GameState CurrentGameState
+	{
+		get { return _currentGameState; }
+		set { _currentGameState = value; }
+	}
+
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
 
@@ -18,6 +27,39 @@ public class GameManager : Singleton<GameManager>
 
 		InstantiateInitialPrefabs();
 
+	}
+
+
+	void UpdateState(GameState state)
+	{
+		GameState previousGameState = _currentGameState;
+		_currentGameState = state;
+
+		switch (_currentGameState)
+		{
+			case GameState.START:
+				Debug.Log("I'm in UpdateState.START");
+				Time.timeScale = 1.0f;
+				break;
+			case GameState.GAMEPLAY:
+				Debug.Log("I'm in UpdateState.GAMEPLAY");
+				Time.timeScale = 1.0f;
+				break;
+			case GameState.PAUSE:
+				Debug.Log("I'm in UpdateState.PAUSE");
+				Time.timeScale = 0.0f;
+				break;
+			case GameState.ENDLEVEL:
+				Debug.Log("I'm in UpdateState.ENDLEVEL");
+				Time.timeScale = 1.0f;
+				break;
+			default:
+				break;
+		}
+
+		// event trigger for transitions between scenes, message etc.
+
+		//OnGameStateChanged.Invoke(_currentGameState, previousGameState);
 
 	}
 
