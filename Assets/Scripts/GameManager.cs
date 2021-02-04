@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 //using UnityEngine.SceneManagement;
+
 
 public class GameManager : Singleton<GameManager>
 {
+	// Game States logics
 	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL}
 
 	GameState _currentGameState = GameState.START;
@@ -15,6 +18,10 @@ public class GameManager : Singleton<GameManager>
 		set { _currentGameState = value; }
 	}
 
+	// The event that will invoke after the game state was changing
+	public GameEvents.EventGameState OnGameStateChanged;
+
+
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
 
@@ -23,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		DontDestroyOnLoad(gameObject);
 
+
 		_instancedInitialPrefabs = new List<GameObject>();
 
 		InstantiateInitialPrefabs();
@@ -30,7 +38,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 
-	void UpdateState(GameState state)
+	public void UpdateState(GameState state)
 	{
 		GameState previousGameState = _currentGameState;
 		_currentGameState = state;
@@ -58,8 +66,7 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		// event trigger for transitions between scenes, message etc.
-
-		//OnGameStateChanged.Invoke(_currentGameState, previousGameState);
+		OnGameStateChanged.Invoke(_currentGameState, previousGameState);
 
 	}
 
