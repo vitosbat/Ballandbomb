@@ -6,24 +6,27 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-	//public Button startGameButton;
+	GameManager gameManager;
 
 	private void Start()
 	{
+		gameManager = GameManager.Instance;
 		GameManager.Instance.OnGameStateChanged.AddListener(GameStateChangedHandler);
 	}
 
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
+		//It must be change! SetActive not on Manager, but on a Menu
 		Debug.Log("Previous: " + previousGameState);
 		Debug.Log("Current: " + currentGameState);
 		gameObject.SetActive(currentGameState == GameManager.GameState.START);
-		//throw new NotImplementedException();
 	}
 
 	public void GameStartButtonDownHandler()
 	{
 		Debug.Log("Start Button down handler");
+		
+		GameManager.Instance.StartGame();
 		GameManager.Instance.UpdateState(GameManager.GameState.GAMEPLAY);
 
 	}

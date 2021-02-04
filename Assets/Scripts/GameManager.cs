@@ -1,9 +1,9 @@
-﻿//using System.Collections;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : Singleton<GameManager>
@@ -22,8 +22,14 @@ public class GameManager : Singleton<GameManager>
 	public GameEvents.EventGameState OnGameStateChanged;
 
 
+	// Scene Loading logics
+	
+	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
+
+	// Current level
+	private string _currentLevel = string.Empty;
 
 
 	private void Start()
@@ -32,12 +38,17 @@ public class GameManager : Singleton<GameManager>
 
 
 		_instancedInitialPrefabs = new List<GameObject>();
-
 		InstantiateInitialPrefabs();
 
 	}
 
-
+	void LoadLevel(string level)
+	{
+		SceneManager.LoadScene(level, LoadSceneMode.Additive);
+		
+		_currentLevel = level;
+	}
+	
 	public void UpdateState(GameState state)
 	{
 		GameState previousGameState = _currentGameState;
@@ -93,8 +104,11 @@ public class GameManager : Singleton<GameManager>
 		_instancedInitialPrefabs.Clear();
 	}
 
+	public void StartGame ()
+	{
+		LoadLevel("Level1");
+	}
 }
-
 
 
 //using System.Collections;
