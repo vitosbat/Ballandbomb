@@ -4,63 +4,63 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    private Rigidbody targetRb;
-    private GameManager gameManager;
-    private float minSpeed = 11.0f;
-    private float maxSpeed = 14.0f;
-    private float maxTorque = 10.0f;
-    private float xSpawnRange = 6.0f;
-    private float ySpawnPos = -2.0f;
+ //   private Rigidbody targetRb;
+ //   private GameManager gameManager;
+ //   private float minSpeed = 11.0f;
+ //   private float maxSpeed = 14.0f;
+ //   private float maxTorque = 10.0f;
+ //   private float xSpawnRange = 6.0f;
+ //   private float ySpawnPos = -2.0f;
 
-    public int pointValue;
-    public ParticleSystem explosionParticle;
+ //   public int pointValue;
+ //   public ParticleSystem explosionParticle;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        targetRb = GetComponent<Rigidbody>();
+ //   // Start is called before the first frame update
+ //   void Start()
+ //   {
+ //       gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+ //       targetRb = GetComponent<Rigidbody>();
 
-        targetRb.AddForce(RandomForce(), ForceMode.Impulse);
-        targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
+ //       targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+ //       targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
-        transform.position = RandomSpawnPos();
-    }
+ //       transform.position = RandomSpawnPos();
+ //   }
 
 
-    private void OnMouseDown()
-    {
-        if (gameManager.isGameActive)
-		{
-            Destroy(gameObject);
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-            gameManager.UpdateScore(pointValue);
+ //   private void OnMouseDown()
+ //   {
+ //       if (gameManager.isGameActive)
+	//	{
+ //           Destroy(gameObject);
+ //           Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+ //           gameManager.UpdateScore(pointValue);
 
-		}
-    }
+	//	}
+ //   }
 
-	private void OnTriggerEnter(Collider other)
-	{
-        Destroy(gameObject);
-        if (!gameObject.CompareTag("Bad Target"))
-		{
-            Destroy(gameObject);
-            gameManager.UpdateScore(-pointValue);
-        }
-	}
+	//private void OnTriggerEnter(Collider other)
+	//{
+ //       Destroy(gameObject);
+ //       if (!gameObject.CompareTag("Bad Target"))
+	//	{
+ //           Destroy(gameObject);
+ //           gameManager.UpdateScore(-pointValue);
+ //       }
+	//}
 
-	Vector3 RandomForce()
-	{
-        return Vector3.up * Random.Range(minSpeed, maxSpeed);
-	}
+	//Vector3 RandomForce()
+	//{
+ //       return Vector3.up * Random.Range(minSpeed, maxSpeed);
+	//}
 
-    float RandomTorque()
-	{
-        return Random.Range(-maxTorque, maxTorque);
-    }
+ //   float RandomTorque()
+	//{
+ //       return Random.Range(-maxTorque, maxTorque);
+ //   }
 
-    Vector3 RandomSpawnPos()
-	{
-        return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), ySpawnPos);
-    }
+ //   Vector3 RandomSpawnPos()
+	//{
+ //       return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), ySpawnPos);
+ //   }
 }
