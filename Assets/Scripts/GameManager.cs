@@ -22,8 +22,7 @@ public class GameManager : Singleton<GameManager>
 	public GameEvents.EventGameState OnGameStateChanged;
 
 
-	// Scene Loading logics
-	
+	// Scenes/Levels Loading logics
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
@@ -32,10 +31,10 @@ public class GameManager : Singleton<GameManager>
 	private string _currentLevel = string.Empty;
 
 
+
 	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
-
 
 		_instancedInitialPrefabs = new List<GameObject>();
 		InstantiateInitialPrefabs();
@@ -44,8 +43,14 @@ public class GameManager : Singleton<GameManager>
 
 	void LoadLevel(string level)
 	{
-		SceneManager.LoadScene(level, LoadSceneMode.Additive);
+		AsyncOperation levelLoading = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
 		
+		if (levelLoading == null)
+		{
+			Debug.LogError("[Game Manager] unable to load level " + level);
+			return;
+		}
+
 		_currentLevel = level;
 	}
 	

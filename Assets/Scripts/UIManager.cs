@@ -11,29 +11,24 @@ public class UIManager : MonoBehaviour
 	private void Start()
 	{
 		gameManager = GameManager.Instance;
-		GameManager.Instance.OnGameStateChanged.AddListener(GameStateChangedHandler);
+		gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
 	}
 
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
-		//It must be change! SetActive not on Manager, but on a Menu
-		Debug.Log("Previous: " + previousGameState);
-		Debug.Log("Current: " + currentGameState);
 		gameObject.SetActive(currentGameState == GameManager.GameState.START);
 	}
 
-	public void GameStartButtonDownHandler()
-	{
-		Debug.Log("Start Button down handler");
-		
-		GameManager.Instance.StartGame();
-		GameManager.Instance.UpdateState(GameManager.GameState.GAMEPLAY);
+	//public void GameStartButtonDownHandler()
+	//{
+	//	gameManager.StartGame();
+	//	gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
 
-	}
+	//}
 
-	public void OptionsButtonDownHandler()
-	{
-		Debug.Log("Options Button down handler");
-	}
+	//public void OptionsButtonDownHandler()
+	//{
+	//	Debug.Log("Options Button down handler");
+	//}
 
 }
