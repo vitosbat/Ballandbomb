@@ -9,13 +9,7 @@ public class UIStartMenu : MonoBehaviour
 	private void Start()
 	{
 		gameManager = GameManager.Instance;
-		//gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
 	}
-
-	//private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
-	//{
-	//	gameObject.SetActive(currentGameState == GameManager.GameState.START);
-	//}
 
 	public void GameStartButtonDownHandler()
 	{
@@ -31,6 +25,8 @@ public class UIStartMenu : MonoBehaviour
 
 	public void QuitGameButtonDownHandler()
 	{
-		Debug.Log("Quit Game Button down handler");
+		gameManager.QuitGame();
+		Debug.Log("Game over :(");
+		
 	}
 }

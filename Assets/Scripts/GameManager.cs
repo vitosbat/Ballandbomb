@@ -113,6 +113,11 @@ public class GameManager : Singleton<GameManager>
 	{
 		LoadLevel("Level1");
 	}
+
+	public void QuitGame ()
+	{
+		Application.Quit();
+	}
 }
 
 
