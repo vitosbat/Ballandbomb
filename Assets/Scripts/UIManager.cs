@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-	GameManager gameManager;
+	//GameManager gameManager;
 
-	private void Start()
-	{
-		gameManager = GameManager.Instance;
-		gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
-	}
+	//private void Start()
+	//{
+	//	gameManager = GameManager.Instance;
+	//	gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
+	//}
 
-	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
-	{
-		gameObject.SetActive(currentGameState == GameManager.GameState.START);
-	}
+	//private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
+	//{
+	//	gameObject.SetActive(currentGameState == GameManager.GameState.START);
+	//}
 
 	//public void GameStartButtonDownHandler()
 	//{
