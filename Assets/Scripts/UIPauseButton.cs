@@ -20,7 +20,6 @@ public class UIPauseButton : MonoBehaviour
 
 	public void PauseButtonDownHandler()
 	{
-		Debug.Log("In pause button down handler");
 		gameManager.UpdateState(GameManager.GameState.PAUSE);
 	}
 }

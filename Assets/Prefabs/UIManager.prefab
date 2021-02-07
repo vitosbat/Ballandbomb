@@ -249,8 +249,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7512351734627358052}
-        m_MethodName: OptionsButtonDownHandler
+      - m_Target: {fileID: 5370429205611678836}
+        m_MethodName: RestartButtonDownHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -997,8 +997,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7512351734627358052}
-        m_MethodName: GameStartButtonDownHandler
+      - m_Target: {fileID: 5370429205611678836}
+        m_MethodName: ResumeButtonDownHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7512351734627358052}
+      - m_Target: {fileID: 5370429205611678836}
         m_MethodName: QuitGameButtonDownHandler
         m_Mode: 1
         m_Arguments:

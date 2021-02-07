@@ -15,7 +15,26 @@ public class UIPauseMenu : MonoBehaviour
 
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
-		Debug.Log("UIPause handler");
 		gameObject.SetActive(currentGameState == GameManager.GameState.PAUSE);
 	}
+
+
+	public void ResumeButtonDownHandler()
+	{
+		gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
+
+	}
+
+	public void RestartButtonDownHandler()
+	{
+		gameManager.UpdateState(GameManager.GameState.START);
+	}
+
+	public void QuitGameButtonDownHandler()
+	{
+		gameManager.QuitGame();
+		Debug.Log("Game over :(");
+
+	}
+
 }

@@ -53,6 +53,19 @@ public class GameManager : Singleton<GameManager>
 
 		_currentLevel = level;
 	}
+
+	void UnloadLevel (string level)
+	{
+		AsyncOperation levelUnloading = SceneManager.UnloadSceneAsync(level);
+		
+		if (levelUnloading == null)
+		{
+			Debug.LogError("[Game Manager] unable to unload level " + level);
+			return;
+		}
+
+		_currentLevel = string.Empty;
+	}
 	
 	public void UpdateState(GameState state)
 	{
@@ -62,19 +75,20 @@ public class GameManager : Singleton<GameManager>
 		switch (_currentGameState)
 		{
 			case GameState.START:
-				Debug.Log("I'm in UpdateState.START");
+				Debug.Log("Update State: START");
 				Time.timeScale = 1.0f;
+				UnloadLevel(_currentLevel);
 				break;
 			case GameState.GAMEPLAY:
-				Debug.Log("I'm in UpdateState.GAMEPLAY");
+				Debug.Log("Update State: GAMEPLAY");
 				Time.timeScale = 1.0f;
 				break;
 			case GameState.PAUSE:
-				Debug.Log("I'm in UpdateState.PAUSE");
+				Debug.Log("Update State: PAUSE");
 				Time.timeScale = 0.0f;
 				break;
 			case GameState.ENDLEVEL:
-				Debug.Log("I'm in UpdateState.ENDLEVEL");
+				Debug.Log("Update State: ENDLEVEL");
 				Time.timeScale = 1.0f;
 				break;
 			default:
