@@ -33,6 +33,5 @@ public class UIStartMenu : MonoBehaviour
 	public void QuitGameButtonDownHandler()
 	{
 		gameManager.QuitGame();
-		
 	}
 }

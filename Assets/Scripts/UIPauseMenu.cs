@@ -33,8 +33,5 @@ public class UIPauseMenu : MonoBehaviour
 	public void QuitGameButtonDownHandler()
 	{
 		gameManager.QuitGame();
-		Debug.Log("Game over :(");
-
 	}
-
 }
