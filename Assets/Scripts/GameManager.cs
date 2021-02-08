@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
 	public GameEvents.EventGameState OnGameStateChanged;
 
 
-	// Scenes/Levels Loading logics
+	// Scenes Loading logic
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
@@ -41,6 +41,7 @@ public class GameManager : Singleton<GameManager>
 
 	}
 
+	// Level loading function. Asyncronous operation uses for tracking loading state.
 	void LoadLevel(string level)
 	{
 		AsyncOperation levelLoading = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
@@ -54,6 +55,7 @@ public class GameManager : Singleton<GameManager>
 		_currentLevel = level;
 	}
 
+	// Level unloading function. Asyncronous operation uses for tracking unloading state.
 	void UnloadLevel (string level)
 	{
 		AsyncOperation levelUnloading = SceneManager.UnloadSceneAsync(level);
@@ -67,6 +69,7 @@ public class GameManager : Singleton<GameManager>
 		_currentLevel = string.Empty;
 	}
 	
+	// The main function of the game state updating
 	public void UpdateState(GameState state)
 	{
 		GameState previousGameState = _currentGameState;
@@ -95,7 +98,7 @@ public class GameManager : Singleton<GameManager>
 				break;
 		}
 
-		// event trigger for transitions between scenes, message etc.
+		// Event trigger about game state changes
 		OnGameStateChanged.Invoke(_currentGameState, previousGameState);
 
 	}
@@ -126,6 +129,17 @@ public class GameManager : Singleton<GameManager>
 	public void StartGame ()
 	{
 		LoadLevel("Level1");
+	}
+
+	public void GoToNextLevel()
+	{
+		// Unload currentLevel
+		// Load next level (maybe put it here as a func string parameter)
+		if (_currentGameState == GameState.ENDLEVEL)
+		{
+			// TODO
+			Debug.Log("GoToNextLevel function.");
+		}
 	}
 
 	public void QuitGame ()
