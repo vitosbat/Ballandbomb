@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // TODO: add the SO array and put there the SO instances in editor
+    [SerializeField]
+    public Dictionary<string, LevelDataSO> levelsData;
+    GameManager gameManager;
+
+    LevelDataSO currentLevelData;
+
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Level name = ");
     }
+        
 }
