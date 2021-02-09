@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/LevelData", fileName ="Level_")]
 public class LevelDataSO : ScriptableObject
 {
-    [Tooltip("The name of the level")]
+    [Tooltip("The name of this level")]
     [SerializeField] private string levelName;
     public string LevelName
 	{

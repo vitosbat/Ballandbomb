@@ -1835,7 +1835,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7523739632923952463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2487092412710543705}
+        m_MethodName: NextLevelButtonHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6972791314685625880
 GameObject:
   m_ObjectHideFlags: 0

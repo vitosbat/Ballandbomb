@@ -11,11 +11,11 @@ public class GameManager : Singleton<GameManager>
 	// Game States logics
 	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL}
 
-	GameState _currentGameState = GameState.START;
+	GameState currentGameState = GameState.START;
 	public GameState CurrentGameState
 	{
-		get { return _currentGameState; }
-		set { _currentGameState = value; }
+		get { return currentGameState; }
+		set { currentGameState = value; }
 	}
 
 	// The event that will invoke after the game state was changing
@@ -28,8 +28,8 @@ public class GameManager : Singleton<GameManager>
 	private List<GameObject> _instancedInitialPrefabs;
 
 	// Current level
-	private string _currentLevel = string.Empty;
-
+	private string currentLevel = string.Empty;
+	private LevelDataSO curreneLevelData;
 
 
 	private void Start()
@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 			return;
 		}
 
-		_currentLevel = level;
+		currentLevel = level;
 	}
 
 	// Level unloading function. Asyncronous operation uses for tracking unloading state.
@@ -65,22 +65,20 @@ public class GameManager : Singleton<GameManager>
 			Debug.LogError("[Game Manager] unable to unload level " + level);
 			return;
 		}
-
-		_currentLevel = string.Empty;
 	}
 	
 	// The main function of the game state updating
 	public void UpdateState(GameState state)
 	{
-		GameState previousGameState = _currentGameState;
-		_currentGameState = state;
+		GameState previousGameState = currentGameState;
+		currentGameState = state;
 
-		switch (_currentGameState)
+		switch (currentGameState)
 		{
 			case GameState.START:
 				Debug.Log("Update State: START");
 				Time.timeScale = 1.0f;
-				UnloadLevel(_currentLevel);
+				UnloadLevel(currentLevel);
 				break;
 			case GameState.GAMEPLAY:
 				Debug.Log("Update State: GAMEPLAY");
@@ -99,7 +97,7 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		// Event trigger about game state changes
-		OnGameStateChanged.Invoke(_currentGameState, previousGameState);
+		OnGameStateChanged.Invoke(currentGameState, previousGameState);
 
 	}
 
@@ -135,9 +133,15 @@ public class GameManager : Singleton<GameManager>
 	{
 		// Unload currentLevel
 		// Load next level (maybe put it here as a func string parameter)
-		if (_currentGameState == GameState.ENDLEVEL)
+		if (currentGameState == GameState.ENDLEVEL)
 		{
 			// TODO
+			UnloadLevel(currentLevel);
+			
+			//string nextLevel = curreneLevelData.
+			LoadLevel("Level2");
+			
+			UpdateState(GameState.GAMEPLAY);
 			Debug.Log("GoToNextLevel function.");
 		}
 	}
