@@ -21,15 +21,15 @@ public class GameManager : Singleton<GameManager>
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
-
-	// Scenes Loading logic
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
-
-	// Current level
+	
+	// Level data
+	private readonly string firstLevelName = "Level1";
 	private string currentLevel = string.Empty;
-	private LevelDataSO curreneLevelData;
+	//private LevelManager levelManager;
+
 
 
 	private void Start()
@@ -126,23 +126,20 @@ public class GameManager : Singleton<GameManager>
 
 	public void StartGame ()
 	{
-		LoadLevel("Level1");
+		LoadLevel(firstLevelName);
 	}
 
 	public void GoToNextLevel()
 	{
-		// Unload currentLevel
-		// Load next level (maybe put it here as a func string parameter)
 		if (currentGameState == GameState.ENDLEVEL)
 		{
-			// TODO
 			UnloadLevel(currentLevel);
-			
-			//string nextLevel = curreneLevelData.
-			LoadLevel("Level2");
-			
+
+
+			//string nextLevel = LevelManager.Instance.levelData.NextLevelName;
+			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
+
 			UpdateState(GameState.GAMEPLAY);
-			Debug.Log("GoToNextLevel function.");
 		}
 	}
 

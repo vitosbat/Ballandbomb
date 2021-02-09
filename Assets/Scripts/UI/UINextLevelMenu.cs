@@ -9,6 +9,7 @@ public class UINextLevelMenu : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
+
         gameManager = GameManager.Instance;
         gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
     }
@@ -22,6 +23,5 @@ public class UINextLevelMenu : MonoBehaviour
 	{
         gameManager.GoToNextLevel();
 	}
-
 
 }

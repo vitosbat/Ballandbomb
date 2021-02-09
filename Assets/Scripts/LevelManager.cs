@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
     GameManager gameManager;
 
-    [SerializeField] LevelDataSO levelData;
+    public LevelDataSO levelData;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
-
+        
         Debug.Log("Level name is " + levelData.LevelName + " | Next level name is " + levelData.NextLevelName);
         
     }
