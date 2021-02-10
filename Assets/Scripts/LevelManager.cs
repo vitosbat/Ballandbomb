@@ -1,6 +1,13 @@
-﻿using System.Collections;
+﻿//using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// TODO: 
+// Spawn logic
+// Destroy and points logic
+// Object pooling
+// Victory and defeat logic
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -8,15 +15,27 @@ public class LevelManager : Singleton<LevelManager>
 
     public LevelDataSO levelData;
 
-    
+    public List<GameObject> targets;
+
+    float spawnRate = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
         
-        Debug.Log("Level name is " + levelData.LevelName + " | Next level name is " + levelData.NextLevelName);
-        
+        StartCoroutine(SpawnTarget());
     }
+
+	IEnumerator SpawnTarget()
+	{        
+        while (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
+		{
+			yield return new WaitForSeconds(spawnRate);
+			int targetIndex = Random.Range(0, targets.Count);
+            Instantiate(targets[targetIndex]);
+		}
+	}
 
     // Update is called once per frame
     void Update()
