@@ -15,7 +15,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public LevelDataSO levelData;
 
-    public List<GameObject> targets;
+    private List<GameObject> targets;
 
     float spawnRate = 0.5f;
 
@@ -23,6 +23,8 @@ public class LevelManager : Singleton<LevelManager>
     void Start()
     {
         gameManager = GameManager.Instance;
+
+        targets = levelData.Targets;
         
         StartCoroutine(SpawnTarget());
     }

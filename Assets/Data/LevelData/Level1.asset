@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Level1
   nextLevelName: Level2
+  targets:
+  - {fileID: 5261702273127461064, guid: f311535a7cfdbd044afada7760f2e1c3, type: 3}
+  - {fileID: 7856710110295550595, guid: 5faaa923136b5fe4391ea9c62804bc91, type: 3}

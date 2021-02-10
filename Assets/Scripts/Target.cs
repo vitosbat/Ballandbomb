@@ -6,6 +6,7 @@ public class Target : MonoBehaviour
 {
 	private Rigidbody targetRb;
 	private GameManager gameManager;
+
 	private float minSpeed = 11.0f;
 	private float maxSpeed = 14.0f;
 
@@ -21,7 +22,6 @@ public class Target : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		
 		targetRb = GetComponent<Rigidbody>();
 
 		transform.position = RandomSpawnPos();
@@ -29,7 +29,6 @@ public class Target : MonoBehaviour
 		targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
 		targetRb.AddForce(RandomForce(), ForceMode.Impulse);
-
 	}
 
 
@@ -38,7 +37,9 @@ public class Target : MonoBehaviour
 		// TODO: add the checking for GameState is GAMEPLAY.
 		Destroy(gameObject);
 		Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-		//gameManager.UpdateScore(pointValue);
+		
+		// gameManager.UpdateScore(pointValue); event?
+		// OnTargetDestroy.Invoke(pointValue); ?
 
 	}
 
@@ -48,7 +49,8 @@ public class Target : MonoBehaviour
 		if (!gameObject.CompareTag("Bad Target"))
 		{
 			Destroy(gameObject);
-			//gameManager.UpdateScore(-pointValue);
+
+			//gameManager.UpdateScore(-pointValue); event?
 		}
 	}
 

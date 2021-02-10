@@ -20,4 +20,14 @@ public class LevelDataSO : ScriptableObject
         get { return nextLevelName; }
         protected set { }
     }
+
+    [SerializeField] public List<GameObject> targets;
+    public List<GameObject> Targets
+	{
+        get { return targets; }
+        protected set { }
+	}
+
+
+
 }
