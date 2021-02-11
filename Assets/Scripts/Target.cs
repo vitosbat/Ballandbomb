@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-	private Rigidbody targetRb;
 	private GameManager gameManager;
+	private Rigidbody targetRb;
 
 	private float minSpeed = 11.0f;
 	private float maxSpeed = 14.0f;
@@ -22,6 +22,8 @@ public class Target : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		gameManager = GameManager.Instance;
+		
 		targetRb = GetComponent<Rigidbody>();
 
 		transform.position = RandomSpawnPos();
@@ -35,9 +37,12 @@ public class Target : MonoBehaviour
 	private void OnMouseDown()
 	{
 		// TODO: add the checking for GameState is GAMEPLAY.
-		Destroy(gameObject);
-		Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-		
+		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
+		{
+			Destroy(gameObject);
+			Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+		}
+
 		// gameManager.UpdateScore(pointValue); event?
 		// OnTargetDestroy.Invoke(pointValue); ?
 

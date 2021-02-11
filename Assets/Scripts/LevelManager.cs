@@ -17,9 +17,9 @@ public class LevelManager : Singleton<LevelManager>
 
     private List<GameObject> targets;
 
-    float spawnRate = 0.5f;
+    //float spawnRate = 0.5f;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -33,7 +33,7 @@ public class LevelManager : Singleton<LevelManager>
 	{        
         while (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			yield return new WaitForSeconds(spawnRate);
+			yield return new WaitForSeconds(levelData.SpawnRate);
 			int targetIndex = Random.Range(0, targets.Count);
             Instantiate(targets[targetIndex]);
 		}

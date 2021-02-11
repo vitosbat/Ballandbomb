@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/LevelData", fileName ="Level_")]
 public class LevelDataSO : ScriptableObject
 {
+    [Header("Level Hierarchy Data")]
     [Tooltip("The name of this level")]
     [SerializeField] private string levelName;
     public string LevelName
@@ -21,13 +22,20 @@ public class LevelDataSO : ScriptableObject
         protected set { }
     }
 
-    [SerializeField] public List<GameObject> targets;
+    [Header("Spawn Objects Data")]
+    [SerializeField] private List<GameObject> targets;
     public List<GameObject> Targets
 	{
         get { return targets; }
         protected set { }
 	}
 
+    [SerializeField] private float spawnRate;
+    public float SpawnRate
+    {
+        get { return spawnRate; }
+        protected set { }
+    }
 
 
 }
