@@ -20,3 +20,7 @@ MonoBehaviour:
   - {fileID: 5515132702819403621, guid: 4976ac8f9cb078e4aac0b21b75245f7d, type: 3}
   - {fileID: 8986078441315111235, guid: c9107eaa6846d7a4ebd6ddf5a21e5557, type: 3}
   spawnRate: 0.3
+  minXSpawnPosition: -6
+  maxXSpawnPosition: 6
+  minYSpawnPosition: 0
+  maxYSpawnPosition: 6

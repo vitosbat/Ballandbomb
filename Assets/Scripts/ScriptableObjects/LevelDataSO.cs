@@ -22,7 +22,8 @@ public class LevelDataSO : ScriptableObject
         protected set { }
     }
 
-    [Header("Spawn Objects Data")]
+    [Header("Spawn Data")]
+    [Tooltip("The list of objects that will be spawn in the current level")]
     [SerializeField] private List<GameObject> targets;
     public List<GameObject> Targets
 	{
@@ -30,12 +31,45 @@ public class LevelDataSO : ScriptableObject
         protected set { }
 	}
 
+    [Space(5)]
+    [Tooltip("The number of seconds between objects spawn")]
     [SerializeField] private float spawnRate;
     public float SpawnRate
     {
         get { return spawnRate; }
         protected set { }
     }
+        
+    [Space(5)]
+    [Tooltip("The min X-coordinate of the object spawning")]
+    [SerializeField] private float minXSpawnPosition;
+    public float MinXSpawnPosition
+    {
+        get { return minXSpawnPosition; }
+        protected set { }
+    }
 
+    [Tooltip("The max X-coordinate of the object spawning")]
+    [SerializeField] private float maxXSpawnPosition;
+    public float MaxXSpawnPosition
+    {
+        get { return maxXSpawnPosition; }
+        protected set { }
+    }
 
+    [Tooltip("The min Y-coordinate of the object spawning")]
+    [SerializeField] private float minYSpawnPosition;
+    public float MinYSpawnPosition
+    {
+        get { return minYSpawnPosition; }
+        protected set { }
+    }
+
+    [Tooltip("The max Y-coordinate of the object spawning")]
+    [SerializeField] private float maxYSpawnPosition;
+    public float MaxYSpawnPosition
+    {
+        get { return maxYSpawnPosition; }
+        protected set { }
+    }
 }

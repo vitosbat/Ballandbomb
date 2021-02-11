@@ -17,8 +17,6 @@ public class LevelManager : Singleton<LevelManager>
 
 	private List<GameObject> targets;
 
-	private float xSpawnRange = 6.0f;
-	private float ySpawnPos = -2.0f;
 	private float maxTorque = 10.0f;
 	private float minSpeed = 11.0f;
 	private float maxSpeed = 14.0f;
@@ -46,9 +44,11 @@ public class LevelManager : Singleton<LevelManager>
 
 	void CreateTarget(GameObject targetObject)
 	{
-		Vector3 position = new Vector3(Random.Range(-xSpawnRange, xSpawnRange), ySpawnPos);
+		Vector3 position = new Vector3(Random.Range(levelData.MinXSpawnPosition, levelData.MaxXSpawnPosition),
+									   Random.Range(levelData.MinYSpawnPosition, levelData.MaxYSpawnPosition),
+									   0);
+
 		GameObject target = Instantiate(targetObject, position, transform.rotation);
-		//Quaternion rotation = Random.Range(-maxTorque, maxTorque);
 		
 		Rigidbody targetRb = target.GetComponent<Rigidbody>();
 
@@ -68,7 +68,6 @@ public class LevelManager : Singleton<LevelManager>
 		return Random.Range(-maxTorque, maxTorque);
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 
