@@ -17,7 +17,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	private List<GameObject> targets;
 
-	private float maxTorque = 10.0f;
+	// private float maxTorque = 10.0f;
 	private float minSpeed = 11.0f;
 	private float maxSpeed = 14.0f;
 
@@ -65,7 +65,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	float RandomTorque()
 	{
-		return Random.Range(-maxTorque, maxTorque);
+		return Random.Range(-levelData.TorqueRange, levelData.TorqueRange);
 	}
 
 	void Update()

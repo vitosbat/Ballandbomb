@@ -72,4 +72,16 @@ public class LevelDataSO : ScriptableObject
         get { return maxYSpawnPosition; }
         protected set { }
     }
+
+
+    [Space(5)]
+    [Tooltip("The torque rate limit")]
+    [SerializeField] private float torqueRange;
+    public float TorqueRange
+    {
+        get { return torqueRange; }
+        protected set { }
+    }
+
+    
 }
