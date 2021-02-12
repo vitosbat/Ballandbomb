@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
 
 	}
 
-	// Level loading function. Asyncronous operation uses for tracking loading state.
+	// Level loading function.
 	void LoadLevel(string level)
 	{
 		AsyncOperation levelLoading = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
@@ -52,10 +52,22 @@ public class GameManager : Singleton<GameManager>
 			return;
 		}
 
-		currentLevel = level;
+		StartCoroutine(WaitForSceneLoad(SceneManager.GetSceneByName(level), level));
 	}
 
-	// Level unloading function. Asyncronous operation uses for tracking unloading state.
+	private IEnumerator WaitForSceneLoad(Scene scene, string levelName)
+	{
+		while (!scene.isLoaded)
+		{
+			yield return null;
+		}
+		
+		SceneManager.SetActiveScene(scene);
+		
+		currentLevel = levelName;
+	}
+
+	// Level unloading function.
 	void UnloadLevel (string level)
 	{
 		AsyncOperation levelUnloading = SceneManager.UnloadSceneAsync(level);
@@ -135,8 +147,6 @@ public class GameManager : Singleton<GameManager>
 		{
 			UnloadLevel(currentLevel);
 
-
-			//string nextLevel = LevelManager.Instance.levelData.NextLevelName;
 			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
 
 			UpdateState(GameState.GAMEPLAY);
