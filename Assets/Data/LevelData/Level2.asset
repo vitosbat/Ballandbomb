@@ -23,4 +23,4 @@ MonoBehaviour:
   minXSpawnPosition: -6
   maxXSpawnPosition: 6
   minYSpawnPosition: 0
-  maxYSpawnPosition: 6
+  maxYSpawnPosition: 0
