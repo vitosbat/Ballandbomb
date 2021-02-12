@@ -83,5 +83,38 @@ public class LevelDataSO : ScriptableObject
         protected set { }
     }
 
-    
+
+
+    [Space(5)]
+    [Tooltip("Minimal X-coordinate force value: right(positive) / left(negative)")]
+    [SerializeField] private float minXForceValue;
+    public float MinXForceValue
+    {
+        get { return minXForceValue; }
+        protected set { }
+    }
+
+    [Tooltip("Maximum X-coordinate force value: right(positive) / left(negative)")]
+    [SerializeField] private float maxXForceValue;
+    public float MaxXForceValue
+    {
+        get { return maxXForceValue; }
+        protected set { }
+    }
+
+    [Tooltip("Minimal Y-coordinate force value: up(positive) / down(negative)")]
+    [SerializeField] private float minYForceValue;
+    public float MinYForceValue
+    {
+        get { return minYForceValue; }
+        protected set { }
+    }
+
+    [Tooltip("Maximum Y-coordinate force value: up(positive) / down(negative)")]
+    [SerializeField] private float maxYForceValue;
+    public float MaxYForceValue
+    {
+        get { return maxYForceValue; }
+        protected set { }
+    }
 }

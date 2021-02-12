@@ -60,7 +60,10 @@ public class LevelManager : Singleton<LevelManager>
 
 	Vector3 RandomForce()
 	{
-		return Vector3.up * Random.Range(minSpeed, maxSpeed);
+		Vector3 xVector = Vector3.right * Random.Range(levelData.MinXForceValue, levelData.MaxXForceValue);
+		Vector3 yVector = Vector3.up * Random.Range(levelData.MinYForceValue, levelData.MaxYForceValue);
+
+		return xVector + yVector;
 	}
 
 	float RandomTorque()
