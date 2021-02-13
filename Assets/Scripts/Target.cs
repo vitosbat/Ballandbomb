@@ -5,12 +5,16 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
 	private GameManager gameManager;
+	private LevelManager levelManager;
 	
-	public ParticleSystem explosionParticle;
+	[SerializeField] ParticleSystem explosionParticle;
+	
+	[SerializeField] int pointValue;
 	
 	void Start()
 	{
 		gameManager = GameManager.Instance;
+		levelManager = LevelManager.Instance;
 	}
 
 
@@ -21,8 +25,9 @@ public class Target : MonoBehaviour
 			Destroy(gameObject);
 			Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 		}
-		// gameManager.UpdateScore(pointValue); event?
-		// OnTargetDestroy.Invoke(pointValue); ?
+
+		levelManager.UpdateScore(pointValue);
+		
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -32,7 +37,7 @@ public class Target : MonoBehaviour
 		{
 			Destroy(gameObject);
 
-			//gameManager.UpdateScore(-pointValue); event?
+			levelManager.UpdateScore(-pointValue);
 		}
 	}
 

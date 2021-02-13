@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // TODO: 
-// Spawn logic
 // Destroy and points logic
-// Object pooling
 // Victory and defeat logic
+// Object pooling
 
 public class LevelManager : Singleton<LevelManager>
 {
@@ -16,10 +15,6 @@ public class LevelManager : Singleton<LevelManager>
 	public LevelDataSO levelData;
 
 	private List<GameObject> targets;
-
-	// private float maxTorque = 10.0f;
-	private float minSpeed = 11.0f;
-	private float maxSpeed = 14.0f;
 
 
 	void Start()
@@ -39,6 +34,23 @@ public class LevelManager : Singleton<LevelManager>
 			
 			int targetIndex = Random.Range(0, targets.Count);
 			CreateTarget(targets[targetIndex]);
+		}
+	}
+
+	void Update()
+	{
+		// Victory condition
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			Debug.Log("You win!");
+			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+		}
+
+		// Defeat condition
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			Debug.Log("You lost.");
+			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
 		}
 	}
 
@@ -71,22 +83,11 @@ public class LevelManager : Singleton<LevelManager>
 		return Random.Range(-levelData.TorqueRange, levelData.TorqueRange);
 	}
 
-	void Update()
+	public void UpdateScore(int score)
 	{
-
-		// Victory condition
-		if (Input.GetKeyDown(KeyCode.W))
-		{
-			Debug.Log("You win!");
-			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
-		}
-
-		// Defeat condition
-		if (Input.GetKeyDown(KeyCode.L))
-		{
-			Debug.Log("You lost.");
-			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
-		}
-
+		Debug.Log("Points update: " + score);
+		
+		// TODO: invoke the event 
 	}
+
 }
