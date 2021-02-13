@@ -117,4 +117,30 @@ public class LevelDataSO : ScriptableObject
         get { return maxYForceValue; }
         protected set { }
     }
+
+    [Header("Score data")]
+    [Tooltip("Number of score when the game is starting.")]
+    [SerializeField] int startScore;
+    public int StartScore
+	{
+        get { return startScore; }
+        protected set { }
+	}
+
+    [Tooltip("Number of score for winning in the game.")]
+    [SerializeField] int winScore;
+    public int WinScore
+    {
+        get { return winScore; }
+        protected set { }
+    }
+
+    [Tooltip("Number of score for losing in the game.")]
+    [SerializeField] int loseScore;
+    public int LoseScore
+    {
+        get { return loseScore; }
+        protected set { }
+    }
+
 }

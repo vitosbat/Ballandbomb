@@ -16,10 +16,14 @@ public class LevelManager : Singleton<LevelManager>
 
 	private List<GameObject> targets;
 
+	int currentScore;
+
 
 	void Start()
 	{
 		gameManager = GameManager.Instance;
+
+		currentScore = levelData.StartScore;
 
 		targets = levelData.Targets;
 
