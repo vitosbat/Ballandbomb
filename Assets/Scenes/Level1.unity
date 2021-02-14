@@ -134,6 +134,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: eb1125b8719c51749be74aa565a16b66,
         type: 2}
+    - target: {fileID: 1529711335123835210, guid: 42aa5d4b5f28a7e40bde5cd2d4baeee5,
+        type: 3}
+      propertyPath: OnScoreChangesEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5646410115688144216}
+    - target: {fileID: 1529711335123835210, guid: 42aa5d4b5f28a7e40bde5cd2d4baeee5,
+        type: 3}
+      propertyPath: OnScoreChangesEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ScoreChangesHandler
+      objectReference: {fileID: 0}
     - target: {fileID: 5578139208093474305, guid: 42aa5d4b5f28a7e40bde5cd2d4baeee5,
         type: 3}
       propertyPath: m_RootOrder
@@ -777,6 +787,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1966385019}
     m_Modifications:
+    - target: {fileID: 5646410116336422258, guid: b53535ecf15896f4db4b75bebf735c2b,
+        type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5646410116336422259, guid: b53535ecf15896f4db4b75bebf735c2b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -899,3 +914,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53535ecf15896f4db4b75bebf735c2b, type: 3}
+--- !u!114 &5646410115688144216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2061865828112966357, guid: b53535ecf15896f4db4b75bebf735c2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5646410115688144215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3156646d9371c643aa3e10462738a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

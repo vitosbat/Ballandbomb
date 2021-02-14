@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // TODO: 
-// Destroy and points logic
 // Victory and defeat logic
 // Object pooling
 
@@ -18,6 +18,8 @@ public class LevelManager : Singleton<LevelManager>
 
 	int currentScore;
 
+	public GameEvents.EventScoreChanges OnScoreChangesEvent;
+	
 
 	void Start()
 	{
@@ -89,9 +91,10 @@ public class LevelManager : Singleton<LevelManager>
 
 	public void UpdateScore(int score)
 	{
-		Debug.Log("Points update: " + score);
-		
-		// TODO: invoke the event 
+		currentScore += score;
+		Debug.Log("Current score: " + currentScore);
+
+		OnScoreChangesEvent.Invoke(currentScore);
 	}
 
 }
