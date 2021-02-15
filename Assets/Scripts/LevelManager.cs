@@ -6,14 +6,11 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 // TODO: 
-// Victory and defeat logic
 // Object pooling
 
 public class LevelManager : Singleton<LevelManager>
 {
 	GameManager gameManager;
-
-	//public LevelDataSO levelData;
 
 	public LevelDataSO levelData;
 
@@ -26,11 +23,11 @@ public class LevelManager : Singleton<LevelManager>
 
 	void Start()
 	{
+		DontDestroyOnLoad(gameObject);
+
 		gameManager = GameManager.Instance;
 
 		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
-
-		
 	}
 
 	private void LevelLoadedHandler(string levelName)
@@ -76,14 +73,14 @@ public class LevelManager : Singleton<LevelManager>
 		// Victory condition
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			if (Input.GetKeyDown(KeyCode.W) || currentScore >= levelData.WinScore)
+			if (Input.GetKeyDown(KeyCode.W))
 			{
 				Debug.Log("You win!");
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
 			}
 
 			// Defeat condition
-			if (Input.GetKeyDown(KeyCode.L) || currentScore <= levelData.LoseScore)
+			if (Input.GetKeyDown(KeyCode.L))
 			{
 				Debug.Log("You lost.");
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
@@ -128,6 +125,19 @@ public class LevelManager : Singleton<LevelManager>
 			Debug.Log("Current score: " + currentScore);
 
 			OnScoreChangesEvent.Invoke(currentScore);
+
+			if (currentScore >= levelData.WinScore)
+			{
+				Debug.Log("You win!");
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+			}
+
+			// Defeat condition
+			if (currentScore <= levelData.LoseScore)
+			{
+				Debug.Log("You lost.");
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+			}
 		}
 	}
 
