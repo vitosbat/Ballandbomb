@@ -7,9 +7,15 @@ public class UILifeSlider : MonoBehaviour
 {
 	[SerializeField] Slider lifeSlider;
 
+
+
+	private void Start()
+	{
+		
+	}
+
 	public void ScoreChangesHandler(int value)
 	{
-		Debug.Log("Value = " + value);
 		lifeSlider.value = value;
 	}
 }

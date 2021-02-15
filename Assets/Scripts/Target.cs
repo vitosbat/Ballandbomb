@@ -26,7 +26,7 @@ public class Target : MonoBehaviour
 			Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 		}
 
-		levelManager.UpdateScore(pointValue);
+		levelManager.ScoreUpdate(pointValue);
 		
 	}
 
@@ -37,7 +37,7 @@ public class Target : MonoBehaviour
 		{
 			Destroy(gameObject);
 
-			levelManager.UpdateScore(-pointValue);
+			levelManager.ScoreUpdate(-pointValue);
 		}
 	}
 

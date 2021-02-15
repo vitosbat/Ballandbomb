@@ -24,3 +24,11 @@ MonoBehaviour:
   maxXSpawnPosition: 6
   minYSpawnPosition: 0
   maxYSpawnPosition: 0
+  torqueRange: 0
+  minXForceValue: 0
+  maxXForceValue: 0
+  minYForceValue: 0
+  maxYForceValue: 0
+  startScore: 0
+  winScore: 200
+  loseScore: -100

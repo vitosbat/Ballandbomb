@@ -19,7 +19,7 @@ public class LevelManager : Singleton<LevelManager>
 	int currentScore;
 
 	public GameEvents.EventScoreChanges OnScoreChangesEvent;
-	
+
 
 	void Start()
 	{
@@ -37,7 +37,7 @@ public class LevelManager : Singleton<LevelManager>
 		while (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
 			yield return new WaitForSeconds(levelData.SpawnRate);
-			
+
 			int targetIndex = Random.Range(0, targets.Count);
 			CreateTarget(targets[targetIndex]);
 		}
@@ -46,17 +46,20 @@ public class LevelManager : Singleton<LevelManager>
 	void Update()
 	{
 		// Victory condition
-		if (Input.GetKeyDown(KeyCode.W))
+		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			Debug.Log("You win!");
-			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
-		}
+			if (Input.GetKeyDown(KeyCode.W) || currentScore >= levelData.WinScore)
+			{
+				Debug.Log("You win!");
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+			}
 
-		// Defeat condition
-		if (Input.GetKeyDown(KeyCode.L))
-		{
-			Debug.Log("You lost.");
-			gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+			// Defeat condition
+			if (Input.GetKeyDown(KeyCode.L) || currentScore <= levelData.LoseScore)
+			{
+				Debug.Log("You lost.");
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+			}
 		}
 	}
 
@@ -67,7 +70,7 @@ public class LevelManager : Singleton<LevelManager>
 									   0);
 
 		GameObject target = Instantiate(targetObject, position, transform.rotation);
-		
+
 		Rigidbody targetRb = target.GetComponent<Rigidbody>();
 
 		targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -89,12 +92,15 @@ public class LevelManager : Singleton<LevelManager>
 		return Random.Range(-levelData.TorqueRange, levelData.TorqueRange);
 	}
 
-	public void UpdateScore(int score)
+	public void ScoreUpdate(int score)
 	{
-		currentScore += score;
-		Debug.Log("Current score: " + currentScore);
+		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
+		{
+			currentScore += score;
+			Debug.Log("Current score: " + currentScore);
 
-		OnScoreChangesEvent.Invoke(currentScore);
+			OnScoreChangesEvent.Invoke(currentScore);
+		}
 	}
 
 }
