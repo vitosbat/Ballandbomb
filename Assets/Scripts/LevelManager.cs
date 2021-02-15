@@ -1,7 +1,8 @@
-﻿//using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 // TODO: 
@@ -11,6 +12,8 @@ using UnityEngine.UI;
 public class LevelManager : Singleton<LevelManager>
 {
 	GameManager gameManager;
+
+	//public LevelDataSO levelData;
 
 	public LevelDataSO levelData;
 
@@ -24,6 +27,31 @@ public class LevelManager : Singleton<LevelManager>
 	void Start()
 	{
 		gameManager = GameManager.Instance;
+
+		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
+
+		
+	}
+
+	private void LevelLoadedHandler(string levelName)
+	{
+		string currentLevel = gameManager.CurrentLevel;
+		string levelDataAddress = "LevelData/" + gameManager.CurrentLevel;
+
+		Debug.Log("Address: " + levelDataAddress);
+		Addressables.LoadAssetAsync<LevelDataSO>(levelDataAddress).Completed += OnLoadDone;
+	}
+
+	private void OnLoadDone(AsyncOperationHandle<LevelDataSO> obj)
+	{
+		if (obj.Result == null)
+		{
+			Debug.LogError("[Addressables] Load result is null.");
+			return;
+		}
+
+		levelData = obj.Result;
+		Debug.Log("AddrLevelData level name: " + levelData.LevelName);
 
 		currentScore = levelData.StartScore;
 

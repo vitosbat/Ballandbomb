@@ -21,16 +21,22 @@ public class GameManager : Singleton<GameManager>
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
+	public GameEvents.EventSceneChanges OnLevelLoaded;
+
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> _instancedInitialPrefabs;
 	
 	// Level data
 	private readonly string firstLevelName = "Level1";
+	
 	private string currentLevel = string.Empty;
-	//private LevelManager levelManager;
-
-
+	public string CurrentLevel
+	{
+		get { return currentLevel; }
+		set { }
+	}
+	
 
 	private void Start()
 	{
@@ -65,6 +71,10 @@ public class GameManager : Singleton<GameManager>
 		SceneManager.SetActiveScene(scene);
 		
 		currentLevel = levelName;
+
+		OnLevelLoaded.Invoke(currentLevel);
+		// event invoke that the scene had loaded
+		// 
 	}
 
 	// Level unloading function.
