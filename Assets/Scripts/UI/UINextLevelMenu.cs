@@ -16,7 +16,7 @@ public class UINextLevelMenu : MonoBehaviour
 
     private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
     {
-        gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL);
+        gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL_WIN);
     }
 
     public void NextLevelButtonHandler()

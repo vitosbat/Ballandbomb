@@ -76,14 +76,14 @@ public class LevelManager : Singleton<LevelManager>
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				Debug.Log("You win!");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
 			}
 
 			// Defeat condition
 			if (Input.GetKeyDown(KeyCode.L))
 			{
 				Debug.Log("You lost.");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
 	}
@@ -129,14 +129,14 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore >= levelData.WinScore)
 			{
 				Debug.Log("You win!");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
 			}
 
 			// Defeat condition
 			if (currentScore <= levelData.LoseScore)
 			{
 				Debug.Log("You lost.");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL);
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
 	}
