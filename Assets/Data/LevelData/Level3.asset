@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8f59c79e894874896b74c79769bd5d, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  levelName: Level3
+  nextLevelName: Final
+  targets:
+  - {fileID: 5261702273127461064, guid: f311535a7cfdbd044afada7760f2e1c3, type: 3}
+  - {fileID: 7856710110295550595, guid: 5faaa923136b5fe4391ea9c62804bc91, type: 3}
+  - {fileID: 5515132702819403621, guid: 4976ac8f9cb078e4aac0b21b75245f7d, type: 3}
+  - {fileID: 8986078441315111235, guid: c9107eaa6846d7a4ebd6ddf5a21e5557, type: 3}
+  spawnRate: 0.8
+  minXSpawnPosition: 8
+  maxXSpawnPosition: 8
+  minYSpawnPosition: -3
+  maxYSpawnPosition: 2
+  torqueRange: 4
+  minXForceValue: -16
+  maxXForceValue: -9
+  minYForceValue: 4
+  maxYForceValue: 7
+  startScore: 0
+  winScore: 200
+  loseScore: -100

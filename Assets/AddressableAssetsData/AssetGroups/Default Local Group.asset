@@ -27,8 +27,14 @@ MonoBehaviour:
     m_Address: LevelData/Level2
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 11400000, guid: 67a045a3e017c5e4689ef493af1cd26c, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 67a045a3e017c5e4689ef493af1cd26c, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 22b047787a6c01f4aa1b019730bf2212
+    m_Address: LevelData/Level3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74227f423ecf2d34a8fd0bf001342376, type: 2}
   m_SchemaSet:

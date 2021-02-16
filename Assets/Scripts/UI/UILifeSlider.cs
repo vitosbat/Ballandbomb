@@ -23,7 +23,8 @@ public class UILifeSlider : MonoBehaviour
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(
-			currentGameState == GameManager.GameState.GAMEPLAY || 
+			currentGameState == GameManager.GameState.GAMEPLAY ||
+			currentGameState == GameManager.GameState.PAUSE ||
 			currentGameState == GameManager.GameState.ENDLEVEL_WIN ||
 			currentGameState == GameManager.GameState.ENDLEVEL_LOSE
 			);
