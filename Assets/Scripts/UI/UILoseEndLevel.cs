@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPauseMenu : MonoBehaviour
+public class UILoseEndLevel : MonoBehaviour
 {
 	GameManager gameManager;
 
@@ -15,19 +15,7 @@ public class UIPauseMenu : MonoBehaviour
 
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
-		gameObject.SetActive(currentGameState == GameManager.GameState.PAUSE);
+		gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL_LOSE);
 	}
 
-
-	public void ResumeButtonDownHandler()
-	{
-		gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
-
-	}
-
-
-	public void QuitGameButtonDownHandler()
-	{
-		gameManager.QuitGame();
-	}
 }
