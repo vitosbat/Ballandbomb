@@ -30,15 +30,21 @@ public class LevelManager : Singleton<LevelManager>
 		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
 	}
 
+	// Loading LevelData scriptable object for new level from Addressables. Final scene excepted.
 	private void LevelLoadedHandler(string levelName)
 	{
-		string currentLevel = gameManager.CurrentLevel;
-		string levelDataAddress = "LevelData/" + gameManager.CurrentLevel;
-
-		Debug.Log("Address: " + levelDataAddress);
-		Addressables.LoadAssetAsync<LevelDataSO>(levelDataAddress).Completed += OnLoadDone;
+		if (gameManager.CurrentGameState != GameManager.GameState.FINAL)
+		{
+			string levelDataAddress = "LevelData/" + levelName;
+			Addressables.LoadAssetAsync<LevelDataSO>(levelDataAddress).Completed += OnLoadDone;
+		}
+		else
+		{
+			Debug.Log("This is a final scene.");
+		}
 	}
 
+	// After LevelData SO was loaded, the method checks the data is not null, and than init level parameters and start spawning.
 	private void OnLoadDone(AsyncOperationHandle<LevelDataSO> obj)
 	{
 		if (obj.Result == null)
@@ -78,7 +84,7 @@ public class LevelManager : Singleton<LevelManager>
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
-					//gameManager.GoToFinalScreen();
+					gameManager.GoToFinalScreen();
 				}
 				else
 				{
@@ -133,6 +139,7 @@ public class LevelManager : Singleton<LevelManager>
 
 			OnScoreChangesEvent.Invoke(currentScore);
 
+			// Victory condition
 			if (currentScore >= levelData.WinScore)
 			{
 				Debug.Log("You win!");

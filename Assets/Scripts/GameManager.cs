@@ -176,6 +176,7 @@ public class GameManager : Singleton<GameManager>
 		if (currentGameState == GameState.FINAL)
 		{
 			UnloadLevel(currentLevel);
+			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
 		}
 	}
 
