@@ -70,19 +70,26 @@ public class LevelManager : Singleton<LevelManager>
 
 	void Update()
 	{
-		// Victory condition
+		// Victory condition [cheating]
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
 			if (Input.GetKeyDown(KeyCode.W))
 			{
-				Debug.Log("You win!");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
+				if (levelData.NextLevelName == "Final")
+				{
+					gameManager.UpdateState(GameManager.GameState.FINAL);
+					//gameManager.GoToFinalScreen();
+				}
+				else
+				{
+					gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
+				}
+
 			}
 
-			// Defeat condition
+			// Defeat condition [cheating]
 			if (Input.GetKeyDown(KeyCode.L))
 			{
-				Debug.Log("You lost.");
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
@@ -129,7 +136,15 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore >= levelData.WinScore)
 			{
 				Debug.Log("You win!");
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
+				if (levelData.NextLevelName == "Final")
+				{
+					gameManager.UpdateState(GameManager.GameState.FINAL);
+					gameManager.GoToFinalScreen();
+				}
+				else
+				{
+					gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
+				}
 			}
 
 			// Defeat condition

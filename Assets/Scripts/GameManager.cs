@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 	// Game States logics
-	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL_WIN, ENDLEVEL_LOSE}
+	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL_WIN, ENDLEVEL_LOSE, FINAL}
 
 	GameState currentGameState = GameState.START;
 	public GameState CurrentGameState
@@ -118,6 +118,10 @@ public class GameManager : Singleton<GameManager>
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
 				break;
+			case GameState.FINAL:
+				Debug.Log("Update State: FINAL");
+				Time.timeScale = 0.0f;
+				break;
 			default:
 				break;
 		}
@@ -166,6 +170,15 @@ public class GameManager : Singleton<GameManager>
 			UpdateState(GameState.GAMEPLAY);
 		}
 	}
+
+	public void GoToFinalScreen()
+	{
+		if (currentGameState == GameState.FINAL)
+		{
+			UnloadLevel(currentLevel);
+		}
+	}
+
 
 	public void QuitGame ()
 	{

@@ -19,14 +19,14 @@ MonoBehaviour:
   - {fileID: 7856710110295550595, guid: 5faaa923136b5fe4391ea9c62804bc91, type: 3}
   - {fileID: 5515132702819403621, guid: 4976ac8f9cb078e4aac0b21b75245f7d, type: 3}
   - {fileID: 8986078441315111235, guid: c9107eaa6846d7a4ebd6ddf5a21e5557, type: 3}
-  spawnRate: 0.8
+  spawnRate: 0.5
   minXSpawnPosition: 8
   maxXSpawnPosition: 8
   minYSpawnPosition: -3
   maxYSpawnPosition: 2
   torqueRange: 4
-  minXForceValue: -16
-  maxXForceValue: -9
+  minXForceValue: -18
+  maxXForceValue: -12
   minYForceValue: 4
   maxYForceValue: 7
   startScore: 0

@@ -22,8 +22,8 @@ MonoBehaviour:
   spawnRate: 0.8
   minXSpawnPosition: -6
   maxXSpawnPosition: 6
-  minYSpawnPosition: 4
-  maxYSpawnPosition: 4
+  minYSpawnPosition: 5
+  maxYSpawnPosition: 5
   torqueRange: 6
   minXForceValue: 0
   maxXForceValue: 0
