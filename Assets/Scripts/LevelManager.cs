@@ -57,6 +57,7 @@ public class LevelManager : Singleton<LevelManager>
 		Debug.Log("AddrLevelData level name: " + levelData.LevelName);
 
 		currentScore = levelData.StartScore;
+		OnScoreChangesEvent.Invoke(currentScore);
 
 		targets = levelData.Targets;
 
@@ -67,7 +68,6 @@ public class LevelManager : Singleton<LevelManager>
 	{
 		while (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			Debug.Log(levelData.SpawnRate);
 			yield return new WaitForSeconds(levelData.SpawnRate);
 
 			int targetIndex = Random.Range(0, targets.Count);
@@ -83,6 +83,7 @@ public class LevelManager : Singleton<LevelManager>
 		{
 			if (Input.GetKeyDown(KeyCode.W))
 			{
+				StopCoroutine(SpawnTarget());
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -92,12 +93,12 @@ public class LevelManager : Singleton<LevelManager>
 				{
 					gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
 				}
-
 			}
 
 			// Defeat condition [cheating]
 			if (Input.GetKeyDown(KeyCode.L))
 			{
+				StopCoroutine(SpawnTarget());
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
@@ -145,9 +146,13 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore >= levelData.WinScore)
 			{
 				Debug.Log("You win!");
+				StopCoroutine(SpawnTarget());
+
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
+
+					// Immediate start Final Screen Scene, without EndLevel Menu
 					gameManager.GoToFinalScreen();
 				}
 				else
@@ -160,6 +165,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore <= levelData.LoseScore)
 			{
 				Debug.Log("You lost.");
+				StopCoroutine(SpawnTarget());
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
