@@ -67,9 +67,11 @@ public class LevelManager : Singleton<LevelManager>
 	{
 		while (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
+			Debug.Log(levelData.SpawnRate);
 			yield return new WaitForSeconds(levelData.SpawnRate);
 
 			int targetIndex = Random.Range(0, targets.Count);
+			
 			CreateTarget(targets[targetIndex]);
 		}
 	}
