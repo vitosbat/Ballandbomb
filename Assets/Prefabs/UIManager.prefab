@@ -510,8 +510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8, y: 66}
-  m_SizeDelta: {x: 670.11975, y: 169.613}
+  m_AnchoredPosition: {x: -0.8, y: 38}
+  m_SizeDelta: {x: 670.11975, y: 234.9899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5164522279670194382
 CanvasRenderer:
@@ -553,12 +553,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You complete this game.
-
-    Congratulations!
+  m_Text: '<b>Congratulations!</b>
 
 
-    Your result - 146%.'
+    You complete this game.
+
+
+    <b>Your result
+    - 146%.</b>'
 --- !u!1 &2141268614931296561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2075,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 36
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
@@ -2083,7 +2085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Congratulation! \nYou win!"
+  m_Text: You win!
 --- !u!1 &7250567711156804004
 GameObject:
   m_ObjectHideFlags: 0

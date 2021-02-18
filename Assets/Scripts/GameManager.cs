@@ -112,15 +112,15 @@ public class GameManager : Singleton<GameManager>
 				break;
 			case GameState.ENDLEVEL_WIN:
 				Debug.Log("Update State: ENDLEVEL_WIN");
-				Time.timeScale = 0.0f;
+				Time.timeScale = 1.0f;
 				break;
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
-				Time.timeScale = 0.0f;
+				Time.timeScale = 1.0f;
 				break;
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
-				Time.timeScale = 0.0f;
+				Time.timeScale = 1.0f;
 				break;
 			default:
 				break;

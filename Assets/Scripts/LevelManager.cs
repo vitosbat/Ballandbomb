@@ -23,7 +23,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		// DontDestroyOnLoad(gameObject);
 
 		gameManager = GameManager.Instance;
 
@@ -84,6 +84,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				StopCoroutine(SpawnTarget());
+				
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -147,7 +148,7 @@ public class LevelManager : Singleton<LevelManager>
 			{
 				Debug.Log("You win!");
 				StopCoroutine(SpawnTarget());
-
+				
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -166,6 +167,7 @@ public class LevelManager : Singleton<LevelManager>
 			{
 				Debug.Log("You lost.");
 				StopCoroutine(SpawnTarget());
+
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
