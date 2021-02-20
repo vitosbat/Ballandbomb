@@ -23,7 +23,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	void Start()
 	{
-		// DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject);
 
 		gameManager = GameManager.Instance;
 

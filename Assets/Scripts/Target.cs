@@ -6,11 +6,11 @@ public class Target : MonoBehaviour
 {
 	private GameManager gameManager;
 	private LevelManager levelManager;
-	
+
 	[SerializeField] ParticleSystem explosionParticle;
-	
+
 	[SerializeField] int pointValue;
-	
+
 	void Start()
 	{
 		gameManager = GameManager.Instance;
@@ -27,18 +27,19 @@ public class Target : MonoBehaviour
 		}
 
 		levelManager.ScoreUpdate(pointValue);
-		
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void Update()
 	{
-		Destroy(gameObject);
-		if (!gameObject.CompareTag("Bad Target"))
+		if (gameObject.transform.position.y <= -5)
 		{
-			Destroy(gameObject);
+			if (!gameObject.CompareTag("Bad Target"))
+			{
+				Destroy(gameObject);
 
-			levelManager.ScoreUpdate(-pointValue);
+				levelManager.ScoreUpdate(-pointValue);
+			}
+			Destroy(gameObject);
 		}
 	}
-
 }
