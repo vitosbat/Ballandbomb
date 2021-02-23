@@ -11,4 +11,6 @@ public class GameEvents
     // The event of new scene loads, and sends loaded scene(level) name
     [System.Serializable] public class EventSceneChanges : UnityEvent<string> { }
 
+    // The event of Level Data loaded
+    [System.Serializable] public class EventLevelData : UnityEvent { }
 }
