@@ -12,12 +12,15 @@ public class LevelManager : Singleton<LevelManager>
 {
 	GameManager gameManager;
 
+	// Scriptable object contained the main data of current level
 	public LevelDataSO levelData;
 
+	// List of target object that populate from LevelData SO
 	private List<GameObject> targets;
 
 	int currentScore;
 
+	// Event invoked after every score updating
 	public GameEvents.EventScoreChanges OnScoreChangesEvent;
 
 
@@ -30,17 +33,13 @@ public class LevelManager : Singleton<LevelManager>
 		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
 	}
 
-	// Loading LevelData scriptable object for new level from Addressables. Final scene excepted.
+	// Loading LevelData scriptable object of new level from LevelData scriptable object. Final scene excepted.
 	private void LevelLoadedHandler(string levelName)
 	{
 		if (gameManager.CurrentGameState != GameManager.GameState.FINAL)
 		{
 			string levelDataAddress = "LevelData/" + levelName;
 			Addressables.LoadAssetAsync<LevelDataSO>(levelDataAddress).Completed += OnLoadDone;
-		}
-		else
-		{
-			Debug.Log("This is a final scene.");
 		}
 	}
 
@@ -54,8 +53,7 @@ public class LevelManager : Singleton<LevelManager>
 		}
 
 		levelData = obj.Result;
-		Debug.Log("AddrLevelData level name: " + levelData.LevelName);
-
+		
 		currentScore = levelData.StartScore;
 		OnScoreChangesEvent.Invoke(currentScore);
 
@@ -76,35 +74,7 @@ public class LevelManager : Singleton<LevelManager>
 		}
 	}
 
-	void Update()
-	{
-		// Victory condition [cheating]
-		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
-		{
-			if (Input.GetKeyDown(KeyCode.W))
-			{
-				StopCoroutine(SpawnTarget());
-				
-				if (levelData.NextLevelName == "Final")
-				{
-					gameManager.UpdateState(GameManager.GameState.FINAL);
-					gameManager.GoToFinalScreen();
-				}
-				else
-				{
-					gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
-				}
-			}
-
-			// Defeat condition [cheating]
-			if (Input.GetKeyDown(KeyCode.L))
-			{
-				StopCoroutine(SpawnTarget());
-				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
-			}
-		}
-	}
-
+	// The function creates the certain target using geometry and physic limits from LevelData scriptable object
 	void CreateTarget(GameObject targetObject)
 	{
 		Vector3 position = new Vector3(Random.Range(levelData.MinXSpawnPosition, levelData.MaxXSpawnPosition),
@@ -134,6 +104,38 @@ public class LevelManager : Singleton<LevelManager>
 		return Random.Range(-levelData.TorqueRange, levelData.TorqueRange);
 	}
 
+
+	void Update()
+	{
+		// This block includes cheatcodes and helps to test the game. It needs to delete in final version.
+		// Victory condition - key "w".
+		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
+		{
+			if (Input.GetKeyDown(KeyCode.W))
+			{
+				StopCoroutine(SpawnTarget());
+				
+				if (levelData.NextLevelName == "Final")
+				{
+					gameManager.UpdateState(GameManager.GameState.FINAL);
+					gameManager.StartFinalScreen();
+				}
+				else
+				{
+					gameManager.UpdateState(GameManager.GameState.ENDLEVEL_WIN);
+				}
+			}
+
+			// Defeat condition - key "l".
+			if (Input.GetKeyDown(KeyCode.L))
+			{
+				StopCoroutine(SpawnTarget());
+				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
+			}
+		}
+	}
+
+	// Updates current score, invokes appropriate event, checks win/lose condition after score updating 
 	public void ScoreUpdate(int score)
 	{
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
@@ -146,15 +148,13 @@ public class LevelManager : Singleton<LevelManager>
 			// Victory condition
 			if (currentScore >= levelData.WinScore)
 			{
-				Debug.Log("You win!");
 				StopCoroutine(SpawnTarget());
 				
 				if (levelData.NextLevelName == "Final")
 				{
+					// Immediate start final scene, without EndLevel Menu
 					gameManager.UpdateState(GameManager.GameState.FINAL);
-
-					// Immediate start Final Screen Scene, without EndLevel Menu
-					gameManager.GoToFinalScreen();
+					gameManager.StartFinalScreen();
 				}
 				else
 				{
@@ -172,5 +172,4 @@ public class LevelManager : Singleton<LevelManager>
 			}
 		}
 	}
-
 }

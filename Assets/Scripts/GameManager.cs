@@ -171,7 +171,7 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
-	public void GoToFinalScreen()
+	public void StartFinalScreen()
 	{
 		if (currentGameState == GameState.FINAL)
 		{
