@@ -22,7 +22,7 @@ public class Target : MonoBehaviour
 	{
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			Destroy(gameObject);
+			gameObject.SetActive(false);
 			Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 		}
 
@@ -35,11 +35,11 @@ public class Target : MonoBehaviour
 		{
 			if (!gameObject.CompareTag("Bad Target"))
 			{
-				Destroy(gameObject);
-
+				gameObject.SetActive(false);
 				levelManager.ScoreUpdate(-pointValue);
 			}
-			Destroy(gameObject);
+
+			gameObject.SetActive(false);
 		}
 	}
 }
