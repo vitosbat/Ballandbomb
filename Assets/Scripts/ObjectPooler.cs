@@ -44,13 +44,19 @@ public class ObjectPooler : Singleton<ObjectPooler>
 		}
 
 		GameObject obj = poolDictionary[index].Dequeue();
-		
-		obj.SetActive(true);
-		obj.transform.position = position;
-		obj.transform.rotation = rotation;
 
-		poolDictionary[index].Enqueue(obj);
+		if (obj != null)
+		{
+			obj.SetActive(true);
+			obj.transform.position = position;
+			obj.transform.rotation = rotation;
 
-		return obj;
+			poolDictionary[index].Enqueue(obj);
+
+			return obj;
+		} else
+		{
+			return null;
+		}
 	}
 }

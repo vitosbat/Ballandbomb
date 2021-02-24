@@ -59,7 +59,7 @@ public class LevelManager : Singleton<LevelManager>
 
 		levelData = obj.Result;
 		OnLevelDataLoadedEvent.Invoke();
-		
+
 		currentScore = levelData.StartScore;
 		OnScoreChangesEvent.Invoke(currentScore);
 
@@ -76,9 +76,6 @@ public class LevelManager : Singleton<LevelManager>
 
 			int targetIndex = Random.Range(0, targets.Count);
 
-			// Try to send not Game Object, but int targetIndex to receiving,
-			// using index, the Game Object from pool dictionary
-			// CreateTarget(targets[targetIndex]);
 			CreateTarget(targetIndex);
 		}
 	}
@@ -90,14 +87,16 @@ public class LevelManager : Singleton<LevelManager>
 									   Random.Range(levelData.MinYSpawnPosition, levelData.MaxYSpawnPosition),
 									   0);
 
-		//GameObject target = Instantiate(targetObject, position, transform.rotation);
 		GameObject target = objectPooler.GetObjectFromPool(index, position, transform.rotation);
 
-		Rigidbody targetRb = target.GetComponent<Rigidbody>();
+		if (target != null)
+		{
+			Rigidbody targetRb = target.GetComponent<Rigidbody>();
 
-		targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
+			targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
-		targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+			targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+		}
 
 	}
 
@@ -124,7 +123,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				StopCoroutine(SpawnTarget());
-				
+
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -159,7 +158,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore >= levelData.WinScore)
 			{
 				StopCoroutine(SpawnTarget());
-				
+
 				if (levelData.NextLevelName == "Final")
 				{
 					// Immediate start final scene, without EndLevel Menu

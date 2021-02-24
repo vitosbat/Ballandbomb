@@ -22,7 +22,8 @@ public class Target : MonoBehaviour
 	{
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
-			gameObject.SetActive(false);
+			TargetDestroy(gameObject); 
+			//gameObject.SetActive(false);
 			Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 		}
 
@@ -35,11 +36,26 @@ public class Target : MonoBehaviour
 		{
 			if (!gameObject.CompareTag("Bad Target"))
 			{
-				gameObject.SetActive(false);
+				TargetDestroy(gameObject); 
+				//gameObject.SetActive(false);
 				levelManager.ScoreUpdate(-pointValue);
 			}
 
-			gameObject.SetActive(false);
+			TargetDestroy(gameObject);
+			//gameObject.SetActive(false);
 		}
+	}
+
+	void TargetDestroy(GameObject gameObject)
+	{
+		Rigidbody targetRb = gameObject.GetComponent<Rigidbody>();
+		
+		targetRb.velocity = Vector3.zero;
+		targetRb.angularVelocity = Vector3.zero;
+		targetRb.rotation = Quaternion.identity;
+		//targetRb.inertiaTensorRotation = Quaternion.identity;
+		//targetRb.inertiaTensor = Vector3.zero;
+
+		gameObject.SetActive(false);
 	}
 }
