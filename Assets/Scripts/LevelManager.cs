@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class LevelManager : Singleton<LevelManager>
 {
 	GameManager gameManager;
+	ObjectPooler objectPooler;
 
 	// Scriptable object contained the main data of current level
 	public LevelDataSO levelData;
@@ -23,12 +24,16 @@ public class LevelManager : Singleton<LevelManager>
 	// Event invoked after every score updating
 	public GameEvents.EventScoreChanges OnScoreChangesEvent;
 
+	// Event invoked after Level Data loaded from scriptable object
+	public GameEvents.EventLevelData OnLevelDataLoadedEvent;
+
 
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 
 		gameManager = GameManager.Instance;
+		objectPooler = ObjectPooler.Instance;
 
 		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
 	}
@@ -53,7 +58,8 @@ public class LevelManager : Singleton<LevelManager>
 		}
 
 		levelData = obj.Result;
-		
+		OnLevelDataLoadedEvent.Invoke();
+
 		currentScore = levelData.StartScore;
 		OnScoreChangesEvent.Invoke(currentScore);
 
@@ -69,25 +75,28 @@ public class LevelManager : Singleton<LevelManager>
 			yield return new WaitForSeconds(levelData.SpawnRate);
 
 			int targetIndex = Random.Range(0, targets.Count);
-			
-			CreateTarget(targets[targetIndex]);
+
+			CreateTarget(targetIndex);
 		}
 	}
 
 	// The function creates the certain target using geometry and physic limits from LevelData scriptable object
-	void CreateTarget(GameObject targetObject)
+	void CreateTarget(int index)
 	{
 		Vector3 position = new Vector3(Random.Range(levelData.MinXSpawnPosition, levelData.MaxXSpawnPosition),
 									   Random.Range(levelData.MinYSpawnPosition, levelData.MaxYSpawnPosition),
 									   0);
 
-		GameObject target = Instantiate(targetObject, position, transform.rotation);
+		GameObject target = objectPooler.GetObjectFromPool(index, position, transform.rotation);
 
-		Rigidbody targetRb = target.GetComponent<Rigidbody>();
+		if (target != null)
+		{
+			Rigidbody targetRb = target.GetComponent<Rigidbody>();
 
-		targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
+			targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
 
-		targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+			targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+		}
 
 	}
 
@@ -114,7 +123,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (Input.GetKeyDown(KeyCode.W))
 			{
 				StopCoroutine(SpawnTarget());
-				
+
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -149,7 +158,7 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore >= levelData.WinScore)
 			{
 				StopCoroutine(SpawnTarget());
-				
+
 				if (levelData.NextLevelName == "Final")
 				{
 					// Immediate start final scene, without EndLevel Menu
