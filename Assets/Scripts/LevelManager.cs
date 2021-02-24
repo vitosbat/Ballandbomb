@@ -35,7 +35,7 @@ public class LevelManager : Singleton<LevelManager>
 		gameManager = GameManager.Instance;
 		objectPooler = ObjectPooler.Instance;
 
-		gameManager.OnLevelLoaded.AddListener(LevelLoadedHandler);
+		gameManager.OnSceneLoaded.AddListener(LevelLoadedHandler);
 	}
 
 	// Loading LevelData scriptable object of new level from LevelData scriptable object. Final scene excepted.
