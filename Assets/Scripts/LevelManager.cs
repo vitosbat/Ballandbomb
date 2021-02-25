@@ -5,8 +5,6 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
-// TODO: 
-// Object pooling
 
 public class LevelManager : Singleton<LevelManager>
 {
