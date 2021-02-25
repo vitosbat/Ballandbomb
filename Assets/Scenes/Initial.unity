@@ -233,10 +233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e00d32e481177245bfb7081fb24ab27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 678a5b442c8bdd94aa6afbf52e924d00, type: 2}
+  playerName: 
   OnGameStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  OnLevelLoaded:
+  OnSceneLoaded:
     m_PersistentCalls:
       m_Calls: []
   initialPrefabs:

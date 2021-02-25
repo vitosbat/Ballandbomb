@@ -18,6 +18,10 @@ public class GameManager : Singleton<GameManager>
 		set { currentGameState = value; }
 	}
 
+	// Player options
+	[SerializeField] PlayerSO playerInfo;
+	public string playerName;
+
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
@@ -43,8 +47,10 @@ public class GameManager : Singleton<GameManager>
 		DontDestroyOnLoad(gameObject);
 
 		_instancedInitialPrefabs = new List<GameObject>();
-		InstantiateInitialPrefabs();
 
+		playerName = playerInfo.PlayerName;
+		
+		InstantiateInitialPrefabs();
 	}
 
 	// Level loading function.
