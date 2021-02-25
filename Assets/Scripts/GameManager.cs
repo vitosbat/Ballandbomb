@@ -19,19 +19,21 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	// Player options
-	[SerializeField] PlayerSO playerInfo;
-	public string playerName;
+	public PlayerSO playerInfo;
+	// public string playerName;
+	// int resultScore;
 
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
+	// The event that will invoke after the Scene loaded to start LevelData loading in LevelManager, etc.
 	public GameEvents.EventSceneChanges OnSceneLoaded;
 
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
-	private List<GameObject> _instancedInitialPrefabs;
+	private List<GameObject> instancedInitialPrefabs;
 	
-	// Level data
+	// Level order control
 	private readonly string firstLevelName = "Level1";
 	
 	private string currentLevel = string.Empty;
@@ -46,11 +48,20 @@ public class GameManager : Singleton<GameManager>
 	{
 		DontDestroyOnLoad(gameObject);
 
-		_instancedInitialPrefabs = new List<GameObject>();
-
-		playerName = playerInfo.PlayerName;
+		instancedInitialPrefabs = new List<GameObject>();
 		
 		InstantiateInitialPrefabs();
+
+		InitiatePlayerInfo();
+	}
+
+	private void InitiatePlayerInfo()
+	{
+		if (playerInfo != null)
+		{
+			playerInfo.PlayerName = playerInfo.DefaultPlayerName;
+			playerInfo.PlayerResultScore = playerInfo.DefaultPlayerResultScore;
+		}
 	}
 
 	// Level loading function.
@@ -79,8 +90,6 @@ public class GameManager : Singleton<GameManager>
 		currentLevel = levelName;
 
 		OnSceneLoaded.Invoke(currentLevel);
-		// event invoke that the scene had loaded
-		// 
 	}
 
 	// Level unloading function.
@@ -144,7 +153,7 @@ public class GameManager : Singleton<GameManager>
 		for (int i = 0; i < initialPrefabs.Length; i++)
 		{
 			prefabInstance = Instantiate(initialPrefabs[i]);
-			_instancedInitialPrefabs.Add(prefabInstance);
+			instancedInitialPrefabs.Add(prefabInstance);
 		}
 	}
 
@@ -152,12 +161,12 @@ public class GameManager : Singleton<GameManager>
 	{
 		base.OnDestroy();
 
-		for (int i = 0; i < _instancedInitialPrefabs.Count; i++)
+		for (int i = 0; i < instancedInitialPrefabs.Count; i++)
 		{
-			Destroy(_instancedInitialPrefabs[i]);
+			Destroy(instancedInitialPrefabs[i]);
 		}
 
-		_instancedInitialPrefabs.Clear();
+		instancedInitialPrefabs.Clear();
 	}
 
 	public void StartGame ()

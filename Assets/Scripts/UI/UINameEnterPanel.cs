@@ -16,6 +16,6 @@ public class UINameEnterPanel : MonoBehaviour
 
 	public void OnButtonSubmit()
 	{
-		gameManager.playerName = inputField.text;
+		gameManager.playerInfo.PlayerName = inputField.text;
 	}
 }
