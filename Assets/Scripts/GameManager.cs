@@ -40,6 +40,8 @@ public class GameManager : Singleton<GameManager>
 		get { return currentLevel; }
 		set { }
 	}
+
+	Leaderboard leaderboard;
 	
 
 	private void Start()
@@ -49,6 +51,8 @@ public class GameManager : Singleton<GameManager>
 		instancedInitialPrefabs = new List<GameObject>();
 		
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
+
+		leaderboard = Leaderboard.Instance;
 		
 		InstantiateInitialPrefabs();
 	}
@@ -144,10 +148,18 @@ public class GameManager : Singleton<GameManager>
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
+				
+				// Save new result and update Leaderboard
+				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+
 				break;
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
+				
+				// Save new result and update Leaderboard
+				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+
 				break;
 			default:
 				break;

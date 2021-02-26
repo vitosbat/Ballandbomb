@@ -16,32 +16,35 @@ public class PlayerInfo
 }
 
 
-public class Leaderboard : MonoBehaviour
+public class Leaderboard : Singleton<Leaderboard>
 {
     // User data to populate the leaderboard list
-    public string userName;
-    public int score;
+    // public string userName;
+    // public int score;
 
     // List of PlayerInfo objects
     List<PlayerInfo> collectedStats;
 
 	private void Start()
 	{
-        // [Temporary]
-        userName = "Britney Bears";
-
         collectedStats = new List<PlayerInfo>();
+	}
 
-        // TODO: time of leaderbord loading: endgame? LoadLeaderBoard() needs to return data or not?
+    public void AddResultToLeaderBoard(string name, int score)
+	{
+        Debug.Log("Added name: " + name + ", score: " + score);
+        
         LoadLeaderBoard();
 
-        
+        collectedStats.Add(new PlayerInfo(name, score));
+
+        UpdateLeaderBoard();
 	}
 
     void LoadLeaderBoard()
     {
         // Load The String Of The Leaderboard That Was Saved In The "UpdatePlayerPrefsString" Method
-        string stats = PlayerPrefs.GetString("LeaderBoards", "");
+        string stats = PlayerPrefs.GetString("LeaderBoards");
 
         // Assign The String To An Array And Split Using The Comma Character
         // This Will Remove The Comma From The String, And Leave Behind The Separated Name And Score
@@ -56,9 +59,27 @@ public class Leaderboard : MonoBehaviour
 			// Add The Object To The List
 			collectedStats.Add(loadedInfo);
 
-			// Update On Screen LeaderBoard
-			// UpdateLeaderBoardVisual();
+            Debug.Log("Name: " + stats2 + ", score: " + stats2[i + 1] + ".\n");
 		}
+
+
+    }
+
+    void UpdateLeaderBoard()
+    {
+        //Start With A Blank String
+        string stats = "";
+
+        //Add Each Name And Score From The Collection To The String
+        for (int i = 0; i < collectedStats.Count; i++)
+        {
+            //Be Sure To Add A Comma To Both The Name And Score, It Will Be Used To Separate The String Later
+            stats += collectedStats[i].playerName + ",";
+            stats += collectedStats[i].playerScore + ",";
+        }
+
+        //Add The String To The PlayerPrefs, This Allows The Information To Be Saved Even When The Game Is Turned Off
+        PlayerPrefs.SetString("LeaderBoards", stats);
     }
 
 }
