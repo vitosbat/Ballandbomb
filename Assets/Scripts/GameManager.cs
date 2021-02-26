@@ -20,9 +20,7 @@ public class GameManager : Singleton<GameManager>
 
 	// Player options
 	public PlayerSO playerInfo;
-	// public string playerName;
-	// int resultScore;
-
+	
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
@@ -50,21 +48,35 @@ public class GameManager : Singleton<GameManager>
 
 		instancedInitialPrefabs = new List<GameObject>();
 		
+		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
+		
 		InstantiateInitialPrefabs();
-
-		InitiatePlayerInfo();
 	}
-
-	private void InitiatePlayerInfo()
+	
+	private void InstantiateInitialPrefabs()
 	{
-		if (playerInfo != null)
+		GameObject prefabInstance;
+		
+		for (int i = 0; i < initialPrefabs.Length; i++)
 		{
-			playerInfo.PlayerName = playerInfo.DefaultPlayerName;
-			playerInfo.PlayerResultScore = playerInfo.DefaultPlayerResultScore;
+			prefabInstance = Instantiate(initialPrefabs[i]);
+			instancedInitialPrefabs.Add(prefabInstance);
 		}
 	}
 
-	// Level loading function.
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		for (int i = 0; i < instancedInitialPrefabs.Count; i++)
+		{
+			Destroy(instancedInitialPrefabs[i]);
+		}
+
+		instancedInitialPrefabs.Clear();
+	}
+
+	// Level scene loading function.
 	void LoadLevel(string level)
 	{
 		AsyncOperation levelLoading = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
@@ -92,7 +104,7 @@ public class GameManager : Singleton<GameManager>
 		OnSceneLoaded.Invoke(currentLevel);
 	}
 
-	// Level unloading function.
+	// Level scene unloading function.
 	void UnloadLevel (string level)
 	{
 		AsyncOperation levelUnloading = SceneManager.UnloadSceneAsync(level);
@@ -146,31 +158,9 @@ public class GameManager : Singleton<GameManager>
 
 	}
 
-	private void InstantiateInitialPrefabs()
-	{
-		GameObject prefabInstance;
-		
-		for (int i = 0; i < initialPrefabs.Length; i++)
-		{
-			prefabInstance = Instantiate(initialPrefabs[i]);
-			instancedInitialPrefabs.Add(prefabInstance);
-		}
-	}
-
-	protected override void OnDestroy()
-	{
-		base.OnDestroy();
-
-		for (int i = 0; i < instancedInitialPrefabs.Count; i++)
-		{
-			Destroy(instancedInitialPrefabs[i]);
-		}
-
-		instancedInitialPrefabs.Clear();
-	}
-
 	public void StartGame ()
 	{
+		playerInfo.PlayerResultScore = playerInfo.DefaultPlayerResultScore;
 
 		LoadLevel(firstLevelName);
 	}

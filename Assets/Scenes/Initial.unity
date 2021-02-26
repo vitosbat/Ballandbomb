@@ -128,6 +128,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1529711335123835210, guid: 42aa5d4b5f28a7e40bde5cd2d4baeee5,
+        type: 3}
+      propertyPath: playerInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 678a5b442c8bdd94aa6afbf52e924d00,
+        type: 2}
     - target: {fileID: 5578139208093474305, guid: 42aa5d4b5f28a7e40bde5cd2d4baeee5,
         type: 3}
       propertyPath: m_RootOrder
@@ -234,7 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 678a5b442c8bdd94aa6afbf52e924d00, type: 2}
-  playerName: 
   OnGameStateChanged:
     m_PersistentCalls:
       m_Calls: []

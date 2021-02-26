@@ -14,10 +14,14 @@ public class LevelManager : Singleton<LevelManager>
 	// Scriptable object contained the main data of current level
 	public LevelDataSO levelData;
 
+	// Player data
+	public PlayerSO playerInfo;
+
 	// List of target object that populate from LevelData SO
 	private List<GameObject> targets;
 
 	int currentScore;
+	int maxLevelScore;
 
 	// Event invoked after every score updating
 	public GameEvents.EventScoreChanges OnScoreChangesEvent;
@@ -59,6 +63,8 @@ public class LevelManager : Singleton<LevelManager>
 		OnLevelDataLoadedEvent.Invoke();
 
 		currentScore = levelData.StartScore;
+		maxLevelScore = currentScore;
+
 		OnScoreChangesEvent.Invoke(currentScore);
 
 		targets = levelData.Targets;
@@ -122,6 +128,9 @@ public class LevelManager : Singleton<LevelManager>
 			{
 				StopCoroutine(SpawnTarget());
 
+				playerInfo.PlayerResultScore += maxLevelScore;
+				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
+
 				if (levelData.NextLevelName == "Final")
 				{
 					gameManager.UpdateState(GameManager.GameState.FINAL);
@@ -137,12 +146,16 @@ public class LevelManager : Singleton<LevelManager>
 			if (Input.GetKeyDown(KeyCode.L))
 			{
 				StopCoroutine(SpawnTarget());
+
+				playerInfo.PlayerResultScore += maxLevelScore;
+				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
+
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
 		}
 	}
 
-	// Updates current score, invokes appropriate event, checks win/lose condition after score updating 
+	// Updates current and max level score, invokes appropriate event, checks win/lose condition after score updating 
 	public void ScoreUpdate(int score)
 	{
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
@@ -152,10 +165,20 @@ public class LevelManager : Singleton<LevelManager>
 
 			OnScoreChangesEvent.Invoke(currentScore);
 
+			if (currentScore > maxLevelScore)
+			{
+				int diff = currentScore - maxLevelScore;
+				maxLevelScore += diff;
+				Debug.Log("Max level score: " + maxLevelScore);
+			}
+
 			// Victory condition
 			if (currentScore >= levelData.WinScore)
 			{
 				StopCoroutine(SpawnTarget());
+
+				playerInfo.PlayerResultScore += maxLevelScore;
+				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				if (levelData.NextLevelName == "Final")
 				{
@@ -174,6 +197,9 @@ public class LevelManager : Singleton<LevelManager>
 			{
 				Debug.Log("You lost.");
 				StopCoroutine(SpawnTarget());
+
+				playerInfo.PlayerResultScore += maxLevelScore;
+				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
