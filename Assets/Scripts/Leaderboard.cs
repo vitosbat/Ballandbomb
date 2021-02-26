@@ -18,17 +18,8 @@ public class PlayerInfo
 
 public class Leaderboard : Singleton<Leaderboard>
 {
-    // User data to populate the leaderboard list
-    // public string userName;
-    // public int score;
-
     // List of PlayerInfo objects
     List<PlayerInfo> collectedStats;
-
-	private void Start()
-	{
-        collectedStats = new List<PlayerInfo>();
-	}
 
     public void AddResultToLeaderBoard(string name, int score)
 	{
@@ -37,12 +28,16 @@ public class Leaderboard : Singleton<Leaderboard>
         LoadLeaderBoard();
 
         collectedStats.Add(new PlayerInfo(name, score));
-
+        
         UpdateLeaderBoard();
+        LoadLeaderBoard();
+
 	}
 
     void LoadLeaderBoard()
     {
+        collectedStats = new List<PlayerInfo>();
+
         // Load The String Of The Leaderboard That Was Saved In The "UpdatePlayerPrefsString" Method
         string stats = PlayerPrefs.GetString("LeaderBoards");
 
@@ -56,13 +51,11 @@ public class Leaderboard : Singleton<Leaderboard>
 			// Use The Collected Information To Create An Object
 			PlayerInfo loadedInfo = new PlayerInfo(stats2[i], int.Parse(stats2[i + 1]));
 
+            Debug.Log("Name: " + loadedInfo.playerName + ", score: " + loadedInfo.playerScore + ".\n");
+
 			// Add The Object To The List
 			collectedStats.Add(loadedInfo);
-
-            Debug.Log("Name: " + stats2 + ", score: " + stats2[i + 1] + ".\n");
 		}
-
-
     }
 
     void UpdateLeaderBoard()
@@ -81,5 +74,4 @@ public class Leaderboard : Singleton<Leaderboard>
         //Add The String To The PlayerPrefs, This Allows The Information To Be Saved Even When The Game Is Turned Off
         PlayerPrefs.SetString("LeaderBoards", stats);
     }
-
 }

@@ -11,5 +11,4 @@ public class UIRestartButton : MonoBehaviour
 		gameManager = GameManager.Instance;
 		gameManager.UpdateState(GameManager.GameState.START);
 	}
-
 }
