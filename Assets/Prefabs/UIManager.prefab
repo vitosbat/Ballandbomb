@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8925435027777387946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.98999023, y: 0.6000061}
+  m_AnchoredPosition: {x: -0.98999023, y: 0.5999756}
   m_SizeDelta: {x: 799.85284, y: 501.21658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7633361360572253298
@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2890360021462617336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1369,7 +1369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2787396494977566448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 2240648980920848135}
   - component: {fileID: 6754095754524883491}
   m_Layer: 5
-  m_Name: OptionsButton
+  m_Name: LeaderBoardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,8 +1524,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7512351734627358052}
-        m_MethodName: OptionsButtonDownHandler
+      - m_Target: {fileID: 2645729509798216960}
+        m_MethodName: ShowLeaderBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1946,7 +1946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Leaderboard
 --- !u!1 &7068069926041493025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,7 +2345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &840160423443493368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2873,17 +2873,17 @@ PrefabInstance:
     - target: {fileID: 5646410116336422260, guid: b53535ecf15896f4db4b75bebf735c2b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5646410117340897873, guid: b53535ecf15896f4db4b75bebf735c2b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.33333334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5646410117340897873, guid: b53535ecf15896f4db4b75bebf735c2b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53535ecf15896f4db4b75bebf735c2b, type: 3}
@@ -3049,6 +3049,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628424832415639458, guid: aacdea99bd5f93d49ae5d20d0bb00656,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793591345124475127, guid: aacdea99bd5f93d49ae5d20d0bb00656,
         type: 3}
@@ -3344,12 +3349,12 @@ PrefabInstance:
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 554.0121
+      value: 554
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 449.07568
+      value: 433
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
@@ -3394,7 +3399,7 @@ PrefabInstance:
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.4
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
@@ -3424,3 +3429,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8196668346321286773}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2645729509798216960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6158653344930968437, guid: 27e67f165262feb47a7e6dfda8f4916a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8196668346321286773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a6d702b53b17a4ea58564c5251dde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

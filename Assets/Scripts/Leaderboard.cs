@@ -16,7 +16,6 @@ public class PlayerResult
 	}
 }
 
-
 public class Leaderboard : Singleton<Leaderboard>
 {    
     public void AddResultToLeaderBoard(string name, int score)
@@ -32,7 +31,7 @@ public class Leaderboard : Singleton<Leaderboard>
         SaveLeaderBoard(leaderBoard);
 	}
 
-    private List<PlayerResult> GetLeaderBoard()
+    public List<PlayerResult> GetLeaderBoard()
     {
         List<PlayerResult> leaderboard = new List<PlayerResult>();
 

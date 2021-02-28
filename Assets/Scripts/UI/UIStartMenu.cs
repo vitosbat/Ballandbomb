@@ -25,11 +25,6 @@ public class UIStartMenu : MonoBehaviour
 
 	}
 
-	public void OptionsButtonDownHandler()
-	{
-		Debug.Log("Options Button down handler");
-	}
-
 	public void QuitGameButtonDownHandler()
 	{
 		gameManager.QuitGame();
