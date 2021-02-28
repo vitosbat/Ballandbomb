@@ -21,7 +21,7 @@ public class UILeaderBoard : MonoBehaviour
 
 		leaderBoardTransformList = new List<Transform>();
 
-		foreach (PlayerResult result in leaderBoard)
+		foreach (PlayerResult result in leaderBoard.GetRange(0, 10))
 		{
 			CreateLeaderboardLine(result, leaderboardTable, leaderBoardTransformList);
 		}
