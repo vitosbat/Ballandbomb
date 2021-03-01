@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// PlayerInfo class used to store players data and making easier to manipulate it
+// PlayerResult class used to store players result data and making easier to manipulate it
 public class PlayerResult
 {
     public string playerName;
@@ -17,7 +17,9 @@ public class PlayerResult
 }
 
 public class Leaderboard : Singleton<Leaderboard>
-{    
+{
+    public GameEvents.EventLeaderboard OnLeaderboardUpdated;
+
     public void AddResultToLeaderBoard(string name, int score)
 	{
         PlayerResult result = new PlayerResult(name, score);
@@ -29,6 +31,8 @@ public class Leaderboard : Singleton<Leaderboard>
         SortLeaderBoard(leaderBoard);
 
         SaveLeaderBoard(leaderBoard);
+
+        OnLeaderboardUpdated.Invoke(leaderBoard);
 	}
 
     public List<PlayerResult> GetLeaderBoard()

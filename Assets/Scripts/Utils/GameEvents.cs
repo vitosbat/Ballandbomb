@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class GameEvents
 {
@@ -13,4 +14,7 @@ public class GameEvents
 
     // The event of Level Data loaded
     [System.Serializable] public class EventLevelData : UnityEvent { }
+
+    // The event of LeaderBoard loaded
+    [System.Serializable] public class EventLeaderboard : UnityEvent<List<PlayerResult>> { }
 }

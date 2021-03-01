@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +11,43 @@ public class UILeaderBoard : MonoBehaviour
 	private List<PlayerResult> leaderBoard;
 	private List<Transform> leaderBoardTransformList;
 
-	private void Awake()
+	private void Start()
+	{
+		gameObject.SetActive(false);
+	}
+
+	private void OnEnable()
+	{
+		leaderBoard = Leaderboard.Instance.GetLeaderBoard();
+
+		CreateLeaderBoardTable(leaderBoard);
+	}
+
+	private void OnDisable()
+	{
+		DestroyLeaderBoard();
+	}
+
+	private void DestroyLeaderBoard()
+	{
+		if (leaderboardTable != null)
+		{
+			foreach (Transform child in leaderboardTable.transform)
+			{
+				if (child.gameObject.activeSelf != false)
+				{
+					Destroy(child.gameObject);
+				}
+			}
+		}
+	}
+
+	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
 		leaderboardTable = transform.Find("Table");
 		leaderboardLine = leaderboardTable.Find("Line");
 
 		leaderboardLine.gameObject.SetActive(false);
-
-		leaderBoard = Leaderboard.Instance.GetLeaderBoard();
 
 		leaderBoardTransformList = new List<Transform>();
 
@@ -25,9 +55,6 @@ public class UILeaderBoard : MonoBehaviour
 		{
 			CreateLeaderboardLine(result, leaderboardTable, leaderBoardTransformList);
 		}
-
-		gameObject.SetActive(false);
-
 	}
 
 	private void CreateLeaderboardLine(PlayerResult result, Transform table, List<Transform> transformList)
