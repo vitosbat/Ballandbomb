@@ -4,20 +4,35 @@ using UnityEngine.UI;
 
 public class UILeaderBoard : MonoBehaviour
 {
-	private Transform leaderboardTable;
-	private Transform leaderboardLine;
-	private List<PlayerResult> leaderBoard;
-	private List<Transform> leaderBoardTransformList;
-	private int numberOfPlaces = 10;
+	LeaderboardManager leaderboardManager;
 
-	private void Start()
+	// Leaderboard table UI object
+	private Transform leaderboardTable;
+
+	// UI template of line in Leaderboard object
+	private Transform leaderboardLine;
+
+	// List of player highscores data
+	private List<PlayerResult> leaderBoard;
+
+	// List of UI lines in Leaderboard
+	private List<Transform> leaderBoardTransformList;
+
+	// Number of lines of player highscores in Leaderboard Table
+	private int numberOfHighscores = 10;
+
+
+	private void Awake()
 	{
 		gameObject.SetActive(false);
+
+		leaderboardManager = LeaderboardManager.Instance;
 	}
 
 	private void OnEnable()
 	{
-		leaderBoard = Leaderboard.Instance.GetLeaderBoard();
+		// Receives actual leaderboard data
+		leaderBoard = leaderboardManager.GetLeaderBoard();
 
 		CreateLeaderBoardTable(leaderBoard);
 	}
@@ -27,6 +42,8 @@ public class UILeaderBoard : MonoBehaviour
 		DestroyLeaderBoard();
 	}
 
+
+	// Removes lines with not actual data from table after Disable Leaderboard UI
 	private void DestroyLeaderBoard()
 	{
 		if (leaderboardTable != null)
@@ -41,23 +58,27 @@ public class UILeaderBoard : MonoBehaviour
 		}
 	}
 
+
+	// Create {numberOfHighscores} lines in leaderboard table using {"Line"} template
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
 		leaderboardTable = transform.Find("Table");
 		leaderboardLine = leaderboardTable.Find("Line");
 
+		// Hides the template 
 		leaderboardLine.gameObject.SetActive(false);
 
 		// Create list of the hignscores lines and populate it in the loop
 		leaderBoardTransformList = new List<Transform>();
 
-
-		foreach (PlayerResult result in leaderBoard.GetRange(0, numberOfPlaces))
+		foreach (PlayerResult result in leaderBoard.GetRange(0, numberOfHighscores))
 		{
 			CreateLeaderboardLine(result, leaderboardTable, leaderBoardTransformList);
 		}
 	}
 
+
+	// Instantiates and populates a line of Leaderboard using a PlayerResult value, and adds it to the List of lines
 	private void CreateLeaderboardLine(PlayerResult result, Transform table, List<Transform> transformList)
 	{
 		float templateHeight = 30f;
@@ -82,6 +103,8 @@ public class UILeaderBoard : MonoBehaviour
 
 	}
 
+
+	// States of Leaderboard UI (using for events)
 	public void ShowLeaderBoard()
 	{
 		gameObject.SetActive(true);

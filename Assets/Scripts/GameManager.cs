@@ -41,7 +41,8 @@ public class GameManager : Singleton<GameManager>
 		set { }
 	}
 
-	Leaderboard leaderboard;
+	// Leaderboard data manager
+	LeaderboardManager leaderboard;
 	
 
 	private void Start()
@@ -52,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 		
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
 
-		leaderboard = Leaderboard.Instance;
+		leaderboard = LeaderboardManager.Instance;
 		
 		InstantiateInitialPrefabs();
 	}
