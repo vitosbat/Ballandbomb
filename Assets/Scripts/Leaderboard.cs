@@ -18,8 +18,6 @@ public class PlayerResult
 
 public class Leaderboard : Singleton<Leaderboard>
 {
-    public GameEvents.EventLeaderboard OnLeaderboardUpdated;
-
     public void AddResultToLeaderBoard(string name, int score)
 	{
         PlayerResult result = new PlayerResult(name, score);
@@ -31,8 +29,6 @@ public class Leaderboard : Singleton<Leaderboard>
         SortLeaderBoard(leaderBoard);
 
         SaveLeaderBoard(leaderBoard);
-
-        OnLeaderboardUpdated.Invoke(leaderBoard);
 	}
 
     public List<PlayerResult> GetLeaderBoard()

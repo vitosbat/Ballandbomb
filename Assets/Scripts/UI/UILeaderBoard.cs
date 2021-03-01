@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,7 @@ public class UILeaderBoard : MonoBehaviour
 	private Transform leaderboardLine;
 	private List<PlayerResult> leaderBoard;
 	private List<Transform> leaderBoardTransformList;
+	private int numberOfPlaces = 10;
 
 	private void Start()
 	{
@@ -49,9 +48,11 @@ public class UILeaderBoard : MonoBehaviour
 
 		leaderboardLine.gameObject.SetActive(false);
 
+		// Create list of the hignscores lines and populate it in the loop
 		leaderBoardTransformList = new List<Transform>();
 
-		foreach (PlayerResult result in leaderBoard.GetRange(0, 10))
+
+		foreach (PlayerResult result in leaderBoard.GetRange(0, numberOfPlaces))
 		{
 			CreateLeaderboardLine(result, leaderboardTable, leaderBoardTransformList);
 		}
