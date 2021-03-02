@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UINameEnterPanel : MonoBehaviour
 {
 	GameManager gameManager;
 
 	public InputField inputField;
+
+	public UnityEvent PlayerNameChangedEvent;
 
 	private void Start()
 	{
@@ -16,6 +17,18 @@ public class UINameEnterPanel : MonoBehaviour
 
 	public void OnButtonSubmit()
 	{
-		gameManager.playerInfo.PlayerName = inputField.text;
+		string playerName = inputField.text;
+
+		if (playerName == "")
+		{
+			playerName = gameManager.playerInfo.DefaultPlayerName;
+		}
+		else
+		{
+			gameManager.playerInfo.PlayerName = playerName;
+		}
+
+		PlayerNameChangedEvent.Invoke();
+		
 	}
 }
