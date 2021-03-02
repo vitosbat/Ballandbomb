@@ -165,19 +165,21 @@ public class LevelManager : Singleton<LevelManager>
 
 			OnScoreChangesEvent.Invoke(currentScore);
 
+			// Set the maximum score on this level
 			if (currentScore > maxLevelScore)
 			{
-				int diff = currentScore - maxLevelScore;
-				maxLevelScore += diff;
+				maxLevelScore += currentScore - maxLevelScore;
 				Debug.Log("Max level score: " + maxLevelScore);
 			}
 
 			// Victory condition
 			if (currentScore >= levelData.WinScore)
 			{
+				// Stop spawning new targets
 				StopCoroutine(SpawnTarget());
 
-				playerInfo.PlayerResultScore += maxLevelScore;
+
+				playerInfo.PlayerResultScore += levelData.WinScore;
 				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				if (levelData.NextLevelName == "Final")

@@ -22,7 +22,6 @@ public class UIStartMenu : MonoBehaviour
 	{
 		gameManager.StartGame();
 		gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
-
 	}
 
 	public void QuitGameButtonDownHandler()
