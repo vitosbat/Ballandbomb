@@ -71,7 +71,9 @@ public class UILeaderBoard : MonoBehaviour
 		// Create list of the hignscores lines and populate it in the loop
 		leaderBoardTransformList = new List<Transform>();
 
-		foreach (PlayerResult result in leaderBoard.GetRange(0, numberOfHighscores))
+		int numberOfLines = leaderBoard.Count < numberOfHighscores ? leaderBoard.Count : numberOfHighscores;
+
+		foreach (PlayerResult result in leaderBoard.GetRange(0, numberOfLines))
 		{
 			CreateLeaderboardLine(result, leaderboardTable, leaderBoardTransformList);
 		}

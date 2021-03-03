@@ -72,6 +72,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
 
         // Add the string to the PlayerPrefs
         PlayerPrefs.SetString("LeaderBoard", strResults);
+        PlayerPrefs.Save();
     }
 
     // Put just added result - last member of List - to the convenient place in leaderboard List
