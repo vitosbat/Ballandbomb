@@ -43,17 +43,18 @@ public class GameManager : Singleton<GameManager>
 
 	// Leaderboard data manager
 	LeaderboardManager leaderboard;
-	
+
 
 	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 
-		instancedInitialPrefabs = new List<GameObject>();
-		
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
-
+		
 		leaderboard = LeaderboardManager.Instance;
+
+		// Instantiates prefabs that will exist all the game session time
+		instancedInitialPrefabs = new List<GameObject>();
 		
 		InstantiateInitialPrefabs();
 	}
