@@ -3882,12 +3882,12 @@ PrefabInstance:
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 554
+      value: 803
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 433
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
@@ -3932,7 +3932,7 @@ PrefabInstance:
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 140571657467510750, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
@@ -3949,20 +3949,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 947537035496055576, guid: 27e67f165262feb47a7e6dfda8f4916a,
-        type: 3}
-      propertyPath: m_Name
-      value: HeaderBackground
-      objectReference: {fileID: 0}
     - target: {fileID: 2096882313918791505, guid: 27e67f165262feb47a7e6dfda8f4916a,
         type: 3}
       propertyPath: m_Name
       value: LeaderBoard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096882313918791505, guid: 27e67f165262feb47a7e6dfda8f4916a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e67f165262feb47a7e6dfda8f4916a, type: 3}

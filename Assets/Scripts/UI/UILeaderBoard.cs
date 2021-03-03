@@ -101,6 +101,15 @@ public class UILeaderBoard : MonoBehaviour
 		int score = result.playerScore;
 		lineTransform.Find("Score").GetComponent<Text>().text = score.ToString();
 
+		lineTransform.Find("LineBackground").gameObject.SetActive(place % 2 != 1);
+
+		if (place == 1 || place == 2 || place == 3)
+		{
+			lineTransform.Find("Place").GetComponent<Text>().fontStyle = FontStyle.Bold;
+			lineTransform.Find("Name").GetComponent<Text>().fontStyle = FontStyle.Bold;
+			lineTransform.Find("Score").GetComponent<Text>().fontStyle = FontStyle.Bold;
+		}
+
 		transformList.Add(lineTransform);
 
 	}
