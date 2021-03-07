@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using PlayFab;
-//using PlayFab.ClientModels;
+using PlayFab;
+using PlayFab.ClientModels;
 using System;
 
-/*
+
 public class PlayfabManager : Singleton<PlayfabManager>
 {
 	private void Start()
@@ -128,5 +128,3 @@ public class PlayfabManager : Singleton<PlayfabManager>
 	#endregion
 
 }
-
-*/
