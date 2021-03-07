@@ -6,6 +6,8 @@ public class UILeaderBoard : MonoBehaviour
 {
 	LeaderboardManager leaderboardManager;
 
+	PlayfabManager playfabManager;
+
 	// Leaderboard table UI object
 	private Transform leaderboardTable;
 
@@ -27,10 +29,13 @@ public class UILeaderBoard : MonoBehaviour
 		gameObject.SetActive(false);
 
 		leaderboardManager = LeaderboardManager.Instance;
+		playfabManager = PlayfabManager.Instance;
 	}
 
 	private void OnEnable()
 	{
+		playfabManager.SendLeaderboard(10);
+
 		// Receives actual leaderboard data
 		leaderBoard = leaderboardManager.GetLeaderBoard();
 
@@ -113,7 +118,6 @@ public class UILeaderBoard : MonoBehaviour
 		transformList.Add(lineTransform);
 
 	}
-
 
 	// States of Leaderboard UI (using for events)
 	public void ShowLeaderBoard()

@@ -44,6 +44,9 @@ public class GameManager : Singleton<GameManager>
 	// Leaderboard data manager
 	LeaderboardManager leaderboard;
 
+	// Back-end leaderboard manager
+	PlayfabManager playfabManager;
+
 
 	private void Start()
 	{
@@ -52,6 +55,7 @@ public class GameManager : Singleton<GameManager>
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
 		
 		leaderboard = LeaderboardManager.Instance;
+		playfabManager = PlayfabManager.Instance;
 
 		// Instantiates prefabs that will exist all the game session time
 		instancedInitialPrefabs = new List<GameObject>();
@@ -153,6 +157,7 @@ public class GameManager : Singleton<GameManager>
 				
 				// Save new result and update Leaderboard
 				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+				playfabManager.SendLeaderboard(playerInfo.PlayerResultScore);
 
 				break;
 			case GameState.FINAL:
@@ -161,6 +166,7 @@ public class GameManager : Singleton<GameManager>
 				
 				// Save new result and update Leaderboard
 				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+				playfabManager.SendLeaderboard(playerInfo.PlayerResultScore);
 
 				break;
 			default:
