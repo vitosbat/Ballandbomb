@@ -16,6 +16,7 @@ public class UILoginPanel : MonoBehaviour
 
 	private void Start()
 	{
+		gameObject.SetActive(false);
 		gameManager = GameManager.Instance;
 		playfab = PlayfabManager.Instance;
 	}
