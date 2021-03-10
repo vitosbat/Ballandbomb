@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class UILoseEndLevel : MonoBehaviour
 {
@@ -12,19 +12,16 @@ public class UILoseEndLevel : MonoBehaviour
 		gameObject.SetActive(false);
 		gameManager = GameManager.Instance;
 		gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
-
 	}
-
 
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL_LOSE);
 		if (currentGameState == GameManager.GameState.ENDLEVEL_LOSE)
 		{
-			string endText = "Good job, " + playerData.PlayerName + "!\n Your score is: " + playerData.PlayerResultScore;
+			string endText = "Good game, " + playerData.PlayerName + "!\n Your score is: " + playerData.PlayerResultScore;
 			
-			transform.Find("EndText").GetComponent<TextMeshProUGUI>().text = endText;
+			transform.Find("EndGameText").GetComponent<Text>().text = endText;
 		}
 	}
-
 }
