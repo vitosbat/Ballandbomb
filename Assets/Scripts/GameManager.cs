@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 	public GameEvents.EventGameState OnGameStateChanged;
 
 	// The event that will invoke after the Scene loaded to start LevelData loading in LevelManager, etc.
-	public GameEvents.EventSceneChanges OnSceneLoaded;
+	public GameEvents.StringParameterEvent OnSceneLoaded;
 
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 
 public class LevelManager : Singleton<LevelManager>
@@ -24,10 +25,11 @@ public class LevelManager : Singleton<LevelManager>
 	int maxLevelScore;
 
 	// Event invoked after every score updating
-	public GameEvents.EventScoreChanges OnScoreChangesEvent;
+	public GameEvents.IntParameterEvent OnScoreChangesEvent;
 
 	// Event invoked after Level Data loaded from scriptable object
-	public GameEvents.EventLevelData OnLevelDataLoadedEvent;
+	public UnityEvent OnLevelDataLoadedEvent;
+	//public GameEvents.EventLevelData OnLevelDataLoadedEvent;
 
 
 	void Start()

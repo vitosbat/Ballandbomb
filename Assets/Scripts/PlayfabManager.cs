@@ -36,12 +36,13 @@ public class PlayfabManager : Singleton<PlayfabManager>
 
 	private void OnLoginSuccess(LoginResult result)
 	{
-		Debug.Log("Successful login / create account");
 		string name = null;
 		if (result.InfoResultPayload.PlayerProfile != null)
 		{
 			name = result.InfoResultPayload.PlayerProfile.DisplayName;
 		}
+		Debug.Log("Successful login / create account. Display name is " + name);
+
 	}
 
 	public void LoginWithEmail(string email, string password)
