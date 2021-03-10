@@ -281,6 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ecc81035f90114ab1fa798b4d2fc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameInputField: {fileID: 0}
+  emailInputField: {fileID: 0}
+  passwordInputField: {fileID: 0}
+  PlayerNameChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1316115867247396479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,6 +430,16 @@ PrefabInstance:
       value: StartMenu
       objectReference: {fileID: 0}
     - target: {fileID: 337715549144454206, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433334490685470755, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858926474222393305, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -727,6 +743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EndGameMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907181238314178930, guid: cc144201bbaea274fa7f6614634d8928,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4783654265582292253, guid: cc144201bbaea274fa7f6614634d8928,
         type: 3}
