@@ -11,7 +11,7 @@ public class GameEvents
     [System.Serializable] public class IntParameterEvent : UnityEvent<int> { }
     
 
-    // The class of events with one string parameter: scene(level) name, etc.
+    // The class of events with one string parameter: scene(level) name, player name, etc.
     [System.Serializable] public class StringParameterEvent : UnityEvent<string> { }
 
     

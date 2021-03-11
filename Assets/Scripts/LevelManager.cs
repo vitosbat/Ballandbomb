@@ -29,8 +29,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	// Event invoked after Level Data loaded from scriptable object
 	public UnityEvent OnLevelDataLoadedEvent;
-	//public GameEvents.EventLevelData OnLevelDataLoadedEvent;
-
+	
 
 	void Start()
 	{

@@ -1,13 +1,19 @@
-﻿using System.Collections;
+﻿//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using System;
+//using System;
 
 
 public class PlayfabManager : Singleton<PlayfabManager>
 {
+	// Player data scriptable object
+	[SerializeField] PlayerSO playerInfo;
+
+	// Enent invoked when player name changed after login
+	public GameEvents.StringParameterEvent OnPlayerNameChanged;
+
 	private void Start()
 	{
 		Login();
@@ -36,13 +42,24 @@ public class PlayfabManager : Singleton<PlayfabManager>
 
 	private void OnLoginSuccess(LoginResult result)
 	{
-		string name = null;
+		string playerName = null;
 		if (result.InfoResultPayload.PlayerProfile != null)
 		{
-			name = result.InfoResultPayload.PlayerProfile.DisplayName;
+			playerName = result.InfoResultPayload.PlayerProfile.DisplayName;
 		}
-		Debug.Log("Successful login / create account. Display name is " + name);
 
+		if (playerName == "" || playerName == null)
+		{
+			Debug.Log("Successful login / create account. Nonamer." );
+		}
+		else
+		{
+			Debug.Log("Successful login / create account. Display name is: [" + playerName + "]");
+			
+			playerInfo.PlayerName = playerName;
+
+			OnPlayerNameChanged.Invoke(playerName);
+		}
 	}
 
 	public void LoginWithEmail(string email, string password)
