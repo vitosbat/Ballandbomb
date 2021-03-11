@@ -12,6 +12,9 @@ public class BackendManager : Singleton<BackendManager>
 	// Enent invoked when player name changed after login
 	public GameEvents.StringParameterEvent OnPlayerNameChanged;
 
+
+	public GameEvents.StringParameterEvent OnWarningMessageSent;
+
 	private void Start()
 	{
 		Login();
@@ -34,7 +37,8 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnError(PlayFabError error)
 	{
-		Debug.Log(error.ErrorMessage);
+		OnWarningMessageSent.Invoke(error.ErrorMessage);
+		
 		Debug.Log(error.GenerateErrorReport());
 	}
 
@@ -75,7 +79,9 @@ public class BackendManager : Singleton<BackendManager>
 	{
 		if (password.Length < 6)
 		{
+			OnWarningMessageSent.Invoke("Password too short. Minimum 6 characters.");
 			Debug.Log("Password too short. Minimum 6 characters.");
+
 			return;
 		}
 
@@ -91,6 +97,8 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnRegisterSuccess(RegisterPlayFabUserResult result)
 	{
+		// TODO: event for close Register panel
+
 		Debug.Log("Registered and logged in!");
 		Debug.Log("Username: " + result.Username);
 	}

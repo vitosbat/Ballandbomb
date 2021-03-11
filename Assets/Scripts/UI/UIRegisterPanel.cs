@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
+using TMPro;
 
 public class UIRegisterPanel : MonoBehaviour
 {
@@ -19,6 +21,13 @@ public class UIRegisterPanel : MonoBehaviour
 
 		gameManager = GameManager.Instance;
 		backendManager = BackendManager.Instance;
+
+		backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
+	}
+
+	private void WarningMessageHandler(string message)
+	{
+		gameObject.transform.Find("WarningText").GetComponent<TextMeshProUGUI>().text = message;
 	}
 
 	public void OnRegisterButtonSubmit()
