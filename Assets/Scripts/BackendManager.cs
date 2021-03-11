@@ -1,12 +1,10 @@
-﻿//using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-//using System;
 
 
-public class PlayfabManager : Singleton<PlayfabManager>
+public class BackendManager : Singleton<BackendManager>
 {
 	// Player data scriptable object
 	[SerializeField] PlayerSO playerInfo;

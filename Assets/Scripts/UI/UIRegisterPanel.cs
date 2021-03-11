@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class UIRegisterPanel : MonoBehaviour
 {
 	GameManager gameManager;
-    PlayfabManager playfab;
+    BackendManager backendManager;
 
     public InputField nameInputField;
     public InputField emailInputField;
@@ -15,9 +15,10 @@ public class UIRegisterPanel : MonoBehaviour
 
 	void Start()
     {
-        gameObject.SetActive(false);
+		HideRegisterPanel();
+
 		gameManager = GameManager.Instance;
-		playfab = PlayfabManager.Instance;
+		backendManager = BackendManager.Instance;
 	}
 
 	public void OnRegisterButtonSubmit()
@@ -35,8 +36,18 @@ public class UIRegisterPanel : MonoBehaviour
 			gameManager.playerInfo.PlayerName = playerName;
 		}
 
-		playfab.Register(playerName, playerEmail, playerPassword);
+		backendManager.Register(playerName, playerEmail, playerPassword);
 
 		PlayerNameChangedEvent.Invoke();
+	}
+
+	public void ShowRegisterPanel()
+	{
+		gameObject.SetActive(true);
+	}
+
+	public void HideRegisterPanel()
+	{
+		gameObject.SetActive(false);
 	}
 }

@@ -6,7 +6,7 @@ public class UILeaderBoard : MonoBehaviour
 {
 	LeaderboardManager leaderboardManager;
 
-	PlayfabManager playfabManager;
+	BackendManager backendManager;
 
 	// Leaderboard table UI object
 	private Transform leaderboardTable;
@@ -29,12 +29,12 @@ public class UILeaderBoard : MonoBehaviour
 		gameObject.SetActive(false);
 
 		leaderboardManager = LeaderboardManager.Instance;
-		playfabManager = PlayfabManager.Instance;
+		backendManager = BackendManager.Instance;
 	}
 
 	private void OnEnable()
 	{
-		playfabManager.SendLeaderboard(10);
+		backendManager.SendLeaderboard(10);
 
 		// Receives actual leaderboard data
 		leaderBoard = leaderboardManager.GetLeaderBoard();

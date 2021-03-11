@@ -6,7 +6,7 @@ public class UILoginPanel : MonoBehaviour
 {
 	GameManager gameManager;
 
-	PlayfabManager playfab;
+	BackendManager backendManager;
 
 	public InputField emailInputField;
 	public InputField passwordInputField;
@@ -15,9 +15,19 @@ public class UILoginPanel : MonoBehaviour
 
 	private void Start()
 	{
-		gameObject.SetActive(false);
 		gameManager = GameManager.Instance;
-		playfab = PlayfabManager.Instance;
+		backendManager = BackendManager.Instance;
+
+		HideLoginPanel();
+	}
+	
+	public void OnLoginButtonSubmit()
+	{
+		backendManager.LoginWithEmail(emailInputField.text, passwordInputField.text);
+
+		//TODO: set gameManager.playerInfo.PlayerName and invoke PlayerNameChangedEvent.Invoke()
+
+		gameObject.SetActive(false);
 	}
 
 	public void ShowLoginPanel()
@@ -25,12 +35,8 @@ public class UILoginPanel : MonoBehaviour
 		gameObject.SetActive(true);
 	}
 
-	public void OnLoginButtonSubmit()
+	public void HideLoginPanel()
 	{
-		playfab.LoginWithEmail(emailInputField.text, passwordInputField.text);
-
-		//TODO: set gameManager.playerInfo.PlayerName and invoke PlayerNameChangedEvent.Invoke()
-
 		gameObject.SetActive(false);
 	}
 }
