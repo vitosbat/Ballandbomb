@@ -8,7 +8,6 @@ public class UILoginPanel : MonoBehaviour
 
 	PlayfabManager playfab;
 
-	public InputField nameInputField;
 	public InputField emailInputField;
 	public InputField passwordInputField;
 
@@ -21,10 +20,17 @@ public class UILoginPanel : MonoBehaviour
 		playfab = PlayfabManager.Instance;
 	}
 
+	public void ShowLoginPanel()
+	{
+		gameObject.SetActive(true);
+	}
+
 	public void OnLoginButtonSubmit()
 	{
 		playfab.LoginWithEmail(emailInputField.text, passwordInputField.text);
 
 		//TODO: set gameManager.playerInfo.PlayerName and invoke PlayerNameChangedEvent.Invoke()
+
+		gameObject.SetActive(false);
 	}
 }

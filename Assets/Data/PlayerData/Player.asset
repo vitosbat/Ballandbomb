@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPlayerName: anonymous
   defaultPlayerResultScore: 0
-  playerName: sun
+  playerName: anonymous
   playerResultScore: 0

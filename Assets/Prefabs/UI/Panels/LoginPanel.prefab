@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db773583096fe446a35fdfce350db5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInputField: {fileID: 0}
   emailInputField: {fileID: 4918063122117864468}
   passwordInputField: {fileID: 5362095347602558021}
   PlayerNameChangedEvent:
@@ -388,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 9063975278703175918, guid: d9e612257d3c4b047b4741142388fefe,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 18
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e612257d3c4b047b4741142388fefe, type: 3}
@@ -421,6 +420,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PasswordInputField
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084232382090680562, guid: 64992500cd85733429273c8dd97283d6,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084232382090680562, guid: 64992500cd85733429273c8dd97283d6,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084232382090680562, guid: 64992500cd85733429273c8dd97283d6,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5428212210845707920, guid: 64992500cd85733429273c8dd97283d6,
         type: 3}
@@ -541,7 +555,12 @@ PrefabInstance:
     - target: {fileID: 7682292991966772406, guid: 64992500cd85733429273c8dd97283d6,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 18
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682292991966772406, guid: 64992500cd85733429273c8dd97283d6,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64992500cd85733429273c8dd97283d6, type: 3}
@@ -753,7 +772,7 @@ PrefabInstance:
     - target: {fileID: 5207894646318904545, guid: 111076f19e2dc324b8cd5613d75a3ca2,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 600
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 5207894646318904545, guid: 111076f19e2dc324b8cd5613d75a3ca2,
         type: 3}
