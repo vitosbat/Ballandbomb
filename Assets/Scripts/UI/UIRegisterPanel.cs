@@ -23,6 +23,7 @@ public class UIRegisterPanel : MonoBehaviour
 		backendManager = BackendManager.Instance;
 
 		backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
+		backendManager.OnRegisterSuccessEvent.AddListener(HideRegisterPanel);
 	}
 
 	private void WarningMessageHandler(string message)

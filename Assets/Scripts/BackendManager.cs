@@ -2,7 +2,7 @@
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-
+using UnityEngine.Events;
 
 public class BackendManager : Singleton<BackendManager>
 {
@@ -12,8 +12,11 @@ public class BackendManager : Singleton<BackendManager>
 	// Enent invoked when player name changed after login
 	public GameEvents.StringParameterEvent OnPlayerNameChanged;
 
-
+	// Event sent the warning message in login/register process
 	public GameEvents.StringParameterEvent OnWarningMessageSent;
+	
+
+	public UnityEvent OnRegisterSuccessEvent;
 
 	private void Start()
 	{
@@ -97,10 +100,9 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnRegisterSuccess(RegisterPlayFabUserResult result)
 	{
-		// TODO: event for close Register panel
+		OnRegisterSuccessEvent.Invoke();	
 
-		Debug.Log("Registered and logged in!");
-		Debug.Log("Username: " + result.Username);
+		Debug.Log("Registered and logged in! Username: " + result.Username);
 	}
 
 
