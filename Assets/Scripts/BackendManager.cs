@@ -89,7 +89,7 @@ public class BackendManager : Singleton<BackendManager>
 		{
 			Email = email,
 			Password = password,
-			Username = username,
+			DisplayName = username,
 			RequireBothUsernameAndEmail = false
 		};
 		PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
