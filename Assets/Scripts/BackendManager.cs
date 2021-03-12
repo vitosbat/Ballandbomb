@@ -102,7 +102,7 @@ public class BackendManager : Singleton<BackendManager>
 	{
 		OnRegisterSuccessEvent.Invoke();	
 
-		Debug.Log("Registered and logged in! Username: " + result.Username);
+		Debug.Log("Successiful registered and logged in.");
 	}
 
 
