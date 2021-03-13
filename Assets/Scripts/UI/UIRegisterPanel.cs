@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System;
+//using UnityEngine.Events;
+//using System;
 using TMPro;
 
 public class UIRegisterPanel : MonoBehaviour

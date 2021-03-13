@@ -197,8 +197,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnRegisterButtonSubmit
+      - m_Target: {fileID: 4033370223285477416, guid: 5de26dc3c9e1e974b931f870124b9af0,
+          type: 3}
+        m_MethodName: ShowRegisterPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

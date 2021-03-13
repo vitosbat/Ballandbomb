@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+//using UnityEngine.Events;
+using System;
+using TMPro;
 
 public class UILoginPanel : MonoBehaviour
 {
@@ -19,15 +21,19 @@ public class UILoginPanel : MonoBehaviour
 		backendManager = BackendManager.Instance;
 		
 		backendManager.OnLoginSuccessEvent.AddListener(HideLoginPanel);
-		// TODO: implement warnings of login process
-		// backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
+		backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
 	}
-	
+
+	private void WarningMessageHandler(string message)
+	{
+		gameObject.transform.Find("WarningText").GetComponent<TextMeshProUGUI>().text = message;
+	}
+
 	public void OnLoginButtonSubmit()
 	{
 		backendManager.LoginWithEmail(emailInputField.text, passwordInputField.text);
 
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 	}
 
 	public void ShowLoginPanel()

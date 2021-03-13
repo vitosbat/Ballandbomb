@@ -50,6 +50,7 @@ public class BackendManager : Singleton<BackendManager>
 			Password = password
 		};
 		PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+		Debug.Log("Login with email [" + email + "]request sent. ");
 	}
 
 	private void OnError(PlayFabError error)
