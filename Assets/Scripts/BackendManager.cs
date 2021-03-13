@@ -80,8 +80,8 @@ public class BackendManager : Singleton<BackendManager>
 
 		if (accountInfo.AccountInfo.TitleInfo != null)
 		{
-			Debug.Log("Display name: " + displayName);
 			displayName = accountInfo.AccountInfo.TitleInfo.DisplayName;
+			Debug.Log("Display name: " + displayName);
 		}
 
 		if (displayName == "" || displayName == null)
@@ -121,9 +121,11 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnRegisterSuccess(RegisterPlayFabUserResult result)
 	{
-		OnRegisterSuccessEvent.Invoke();
+		Debug.Log("Successiful registered and logged in. PlayfabID: " + result.PlayFabId);
 
-		Debug.Log("Successiful registered and logged in.");
+		GetPlayerAccount(result.PlayFabId);
+
+		OnRegisterSuccessEvent.Invoke();
 	}
 
 
