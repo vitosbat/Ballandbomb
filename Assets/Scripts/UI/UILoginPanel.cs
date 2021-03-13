@@ -10,30 +10,32 @@ public class UILoginPanel : MonoBehaviour
 
 	BackendManager backendManager;
 
+	Transform warningMessage;
+
 	public InputField emailInputField;
 	public InputField passwordInputField;
 
 	private void Start()
 	{
-		HideLoginPanel();
-
 		gameManager = GameManager.Instance;
 		backendManager = BackendManager.Instance;
 		
 		backendManager.OnLoginSuccessEvent.AddListener(HideLoginPanel);
 		backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
+
+		warningMessage = transform.Find("WarningText");
+
+		HideLoginPanel();
 	}
 
 	private void WarningMessageHandler(string message)
 	{
-		gameObject.transform.Find("WarningText").GetComponent<TextMeshProUGUI>().text = message;
+		warningMessage.GetComponent<TextMeshProUGUI>().text = message;
 	}
 
 	public void OnLoginButtonSubmit()
 	{
 		backendManager.LoginWithEmail(emailInputField.text, passwordInputField.text);
-
-		//gameObject.SetActive(false);
 	}
 
 	public void ShowLoginPanel()
@@ -43,6 +45,7 @@ public class UILoginPanel : MonoBehaviour
 
 	public void HideLoginPanel()
 	{
+		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
 		gameObject.SetActive(false);
 	}
 }

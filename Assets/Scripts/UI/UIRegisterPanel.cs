@@ -9,24 +9,28 @@ public class UIRegisterPanel : MonoBehaviour
 	GameManager gameManager;
     BackendManager backendManager;
 
-    public InputField nameInputField;
+	Transform warningMessage;
+
+	public InputField nameInputField;
     public InputField emailInputField;
     public InputField passwordInputField;
 
 	void Start()
     {
-		HideRegisterPanel();
-
 		gameManager = GameManager.Instance;
 		backendManager = BackendManager.Instance;
 
 		backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
 		backendManager.OnRegisterSuccessEvent.AddListener(HideRegisterPanel);
+
+		warningMessage = transform.Find("WarningText");
+
+		HideRegisterPanel();
 	}
 
 	private void WarningMessageHandler(string message)
 	{
-		gameObject.transform.Find("WarningText").GetComponent<TextMeshProUGUI>().text = message;
+		warningMessage.GetComponent<TextMeshProUGUI>().text = message;
 	}
 
 	public void OnRegisterButtonSubmit()
@@ -49,11 +53,13 @@ public class UIRegisterPanel : MonoBehaviour
 
 	public void ShowRegisterPanel()
 	{
+		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
 		gameObject.SetActive(true);
 	}
 
 	public void HideRegisterPanel()
 	{
+		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
 		gameObject.SetActive(false);
 	}
 }
