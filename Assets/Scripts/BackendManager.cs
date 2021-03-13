@@ -13,11 +13,12 @@ public class BackendManager : Singleton<BackendManager>
 	// Enent invoked when player name changed after login
 	public GameEvents.StringParameterEvent OnPlayerNameChanged;
 
-	// Event sent the warning message in login/register process
+	// Event sent the warning messages of login/register process
 	public GameEvents.StringParameterEvent OnWarningMessageSent;
 
-	// Event invokes when Player have registered
+	// Events invoked after Player has successfully registered/logged in
 	public UnityEvent OnRegisterSuccessEvent;
+	public UnityEvent OnLoginSuccessEvent;
 
 	private void Start()
 	{
@@ -63,6 +64,8 @@ public class BackendManager : Singleton<BackendManager>
 		Debug.Log("OnLoginSuccess entry. PlayfabID: " + result.PlayFabId);
 
 		GetPlayerAccount(result.PlayFabId);
+
+		OnLoginSuccessEvent.Invoke();
 	}
 
 	public void GetPlayerAccount(string playfabId)

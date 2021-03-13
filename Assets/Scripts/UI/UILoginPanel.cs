@@ -11,21 +11,21 @@ public class UILoginPanel : MonoBehaviour
 	public InputField emailInputField;
 	public InputField passwordInputField;
 
-	//public UnityEvent PlayerNameChangedEvent;
-
 	private void Start()
 	{
+		HideLoginPanel();
+
 		gameManager = GameManager.Instance;
 		backendManager = BackendManager.Instance;
-
-		HideLoginPanel();
+		
+		backendManager.OnLoginSuccessEvent.AddListener(HideLoginPanel);
+		// TODO: implement warnings of login process
+		// backendManager.OnWarningMessageSent.AddListener(WarningMessageHandler);
 	}
 	
 	public void OnLoginButtonSubmit()
 	{
 		backendManager.LoginWithEmail(emailInputField.text, passwordInputField.text);
-
-		//TODO: set gameManager.playerInfo.PlayerName and invoke PlayerNameChangedEvent.Invoke()
 
 		gameObject.SetActive(false);
 	}

@@ -13,8 +13,6 @@ public class UIRegisterPanel : MonoBehaviour
     public InputField emailInputField;
     public InputField passwordInputField;
 
-	//public UnityEvent PlayerNameChangedEvent;
-
 	void Start()
     {
 		HideRegisterPanel();
@@ -47,8 +45,6 @@ public class UIRegisterPanel : MonoBehaviour
 		}
 
 		backendManager.Register(playerName, playerEmail, playerPassword);
-
-		//PlayerNameChangedEvent.Invoke();
 	}
 
 	public void ShowRegisterPanel()
