@@ -11,7 +11,7 @@ public class UILoginPanel : MonoBehaviour
 	public InputField emailInputField;
 	public InputField passwordInputField;
 
-	public UnityEvent PlayerNameChangedEvent;
+	//public UnityEvent PlayerNameChangedEvent;
 
 	private void Start()
 	{
