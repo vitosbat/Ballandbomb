@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UILeaderBoard : MonoBehaviour
 {
-	LeaderboardManager leaderboardManager;
+	// LeaderboardManager leaderboardManager;
 
 	BackendManager backendManager;
 
@@ -28,25 +29,28 @@ public class UILeaderBoard : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 
-		leaderboardManager = LeaderboardManager.Instance;
 		backendManager = BackendManager.Instance;
+
+		backendManager.OnLeaderboardDataFormed.AddListener(LeaderboardDataGetHandler);
 	}
 
+	// Request the actual leaderboard data from server
 	private void OnEnable()
 	{
-		backendManager.SendLeaderboard(10);
+		backendManager.GetLeaderboard();
+	}
 
-		// Receives actual leaderboard data
-		leaderBoard = leaderboardManager.GetLeaderBoard();
-
+	// Receives actual leaderboard data
+	private void LeaderboardDataGetHandler(List<PlayerResult> leaderBoard)
+	{
 		CreateLeaderBoardTable(leaderBoard);
 	}
+
 
 	private void OnDisable()
 	{
 		DestroyLeaderBoard();
 	}
-
 
 	// Removes lines with not actual data from table after Disable Leaderboard UI
 	private void DestroyLeaderBoard()
@@ -64,9 +68,14 @@ public class UILeaderBoard : MonoBehaviour
 	}
 
 
-	// Create {numberOfHighscores} lines in leaderboard table using {"Line"} template
+	// Create lines with users highscores in leaderboard table using "Line" template
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
+		foreach(PlayerResult res in leaderBoard)
+		{
+			Debug.Log("Player name: " + res.playerName + "; score: " + res.playerScore);
+		}
+
 		leaderboardTable = transform.Find("Table");
 		leaderboardLine = leaderboardTable.Find("Line");
 
@@ -119,7 +128,7 @@ public class UILeaderBoard : MonoBehaviour
 
 	}
 
-	// States of Leaderboard UI (using for events)
+	// States of Leaderboard UI
 	public void ShowLeaderBoard()
 	{
 		gameObject.SetActive(true);

@@ -20,6 +20,9 @@ public class BackendManager : Singleton<BackendManager>
 	public UnityEvent OnRegisterSuccessEvent;
 	public UnityEvent OnLoginSuccessEvent;
 
+	// Event 
+	public GameEvents.EventLeaderboard OnLeaderboardDataFormed;
+
 	private void Start()
 	{
 		Login();
@@ -138,7 +141,7 @@ public class BackendManager : Singleton<BackendManager>
 
 
 	#region Leaderboard management
-	public void SendLeaderboard(int score)
+	public void UpdateLeaderboard(int score)
 	{
 		var request = new UpdatePlayerStatisticsRequest
 		{
@@ -157,7 +160,7 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
 	{
-		Debug.Log("Successful leaderboard sent.");
+		Debug.Log("Successful leaderboard updated.");
 	}
 
 	public void GetLeaderboard()
@@ -173,11 +176,16 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnLeaderboardGet(GetLeaderboardResult result)
 	{
+		List<PlayerResult> leaderboard = new List<PlayerResult>();
+
 		foreach (var item in result.Leaderboard)
 		{
-			Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+			leaderboard.Add(new PlayerResult(item.DisplayName, item.StatValue));
 		}
+
+		OnLeaderboardDataFormed.Invoke(leaderboard);
 	}
+
 	#endregion
 
 }

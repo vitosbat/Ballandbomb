@@ -45,7 +45,7 @@ public class GameManager : Singleton<GameManager>
 	BackendManager backendManager;
 
 	// Leaderboard data manager
-	LeaderboardManager leaderboard;
+	//LeaderboardManager leaderboard;
 
 
 	private void Start()
@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
 
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
 		
-		leaderboard = LeaderboardManager.Instance;
+		//leaderboard = LeaderboardManager.Instance;
 		backendManager = BackendManager.Instance;
 
 		// Instantiates prefabs that will exist all the game session time
@@ -139,36 +139,38 @@ public class GameManager : Singleton<GameManager>
 				Time.timeScale = 1.0f;
 				UnloadLevel(currentLevel);
 				break;
+
 			case GameState.GAMEPLAY:
 				Debug.Log("Update State: GAMEPLAY");
 				Time.timeScale = 1.0f;
 				break;
+
 			case GameState.PAUSE:
 				Debug.Log("Update State: PAUSE");
 				Time.timeScale = 0.0f;
 				break;
+
 			case GameState.ENDLEVEL_WIN:
 				Debug.Log("Update State: ENDLEVEL_WIN");
 				Time.timeScale = 1.0f;
 				break;
+
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
-				
-				// Save new result and update Leaderboard
-				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
-				backendManager.SendLeaderboard(playerInfo.PlayerResultScore);
-
+				// Update Leaderboard
+				//leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
+
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
-				
-				// Save new result and update Leaderboard
-				leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
-				backendManager.SendLeaderboard(playerInfo.PlayerResultScore);
-
+				// Update Leaderboard
+				// leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
+				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
+
 			default:
 				break;
 		}

@@ -104,7 +104,7 @@ RectTransform:
   m_Children:
   - {fileID: 3557258651904526928}
   - {fileID: 4025643763399892848}
-  - {fileID: 4070177686209252398}
+  - {fileID: 7361097294126653414}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,6 +267,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderBoardTable
       objectReference: {fileID: 0}
+    - target: {fileID: 2675726962861701809, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8897393818256877945, guid: d1e8a8d8cf7c810448f2022750148239,
         type: 3}
       propertyPath: m_RootOrder
@@ -324,9 +329,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1e8a8d8cf7c810448f2022750148239, type: 3}
---- !u!4 &4070177686209252398 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8897393818256877945, guid: d1e8a8d8cf7c810448f2022750148239,
+--- !u!224 &7361097294126653414 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2675726962861701809, guid: d1e8a8d8cf7c810448f2022750148239,
     type: 3}
   m_PrefabInstance: {fileID: 4829487744143877463}
   m_PrefabAsset: {fileID: 0}
