@@ -14,7 +14,7 @@ public class UILeaderBoard : MonoBehaviour
 	 private Transform leaderboardLine;
 
 	// List of player highscores data
-	private List<PlayerResult> leaderBoard;
+	//private List<PlayerResult> leaderBoard;
 
 	// List of UI lines in Leaderboard
 	private List<Transform> leaderBoardTransformList;
@@ -68,8 +68,9 @@ public class UILeaderBoard : MonoBehaviour
 	// Create lines with users highscores in leaderboard table using "Line" template
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
-		Transform leaderboardTableWrapper = transform.Find("LeaderBoardTable");
-		leaderboardTable = leaderboardTableWrapper.Find("Table");
+		//Transform leaderboardTableWrapper = 
+		leaderboardTable = transform.Find("LeaderBoardTable"); 
+		//leaderboardTableWrapper.Find("Table");
 
 		leaderboardLine = leaderboardTable.Find("Line");
 
