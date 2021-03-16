@@ -40,9 +40,12 @@ public class UILeaderBoard : MonoBehaviour
 	// Receives actual leaderboard data
 	private void LeaderboardDataGetHandler(List<PlayerResult> leaderBoard)
 	{
+		// Destroy old table 
+		DestroyLeaderBoard();
+
+		// Create table with new data
 		CreateLeaderBoardTable(leaderBoard);
 	}
-
 
 	private void OnDisable()
 	{
