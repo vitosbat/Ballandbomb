@@ -5,15 +5,13 @@ using UnityEngine.UI;
 
 public class UILeaderBoard : MonoBehaviour
 {
-	// LeaderboardManager leaderboardManager;
-
 	BackendManager backendManager;
 
 	// Leaderboard table UI object
-	private Transform leaderboardTable;
+	 private Transform leaderboardTable;
 
 	// UI template of line in Leaderboard object
-	private Transform leaderboardLine;
+	 private Transform leaderboardLine;
 
 	// List of player highscores data
 	private List<PlayerResult> leaderBoard;
@@ -67,16 +65,12 @@ public class UILeaderBoard : MonoBehaviour
 		}
 	}
 
-
 	// Create lines with users highscores in leaderboard table using "Line" template
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
-		foreach(PlayerResult res in leaderBoard)
-		{
-			Debug.Log("Player name: " + res.playerName + "; score: " + res.playerScore);
-		}
+		Transform leaderboardTableWrapper = transform.Find("LeaderBoardTable");
+		leaderboardTable = leaderboardTableWrapper.Find("Table");
 
-		leaderboardTable = transform.Find("Table");
 		leaderboardLine = leaderboardTable.Find("Line");
 
 		// Hides the template 

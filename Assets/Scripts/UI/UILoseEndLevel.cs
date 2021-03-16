@@ -6,6 +6,8 @@ public class UILoseEndLevel : MonoBehaviour
 	GameManager gameManager;
 
 	[SerializeField] private PlayerSO playerData;
+
+	[SerializeField] private GameObject leaderBoard;
 	
 	private void Start()
 	{
@@ -17,11 +19,14 @@ public class UILoseEndLevel : MonoBehaviour
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL_LOSE);
+		
 		if (currentGameState == GameManager.GameState.ENDLEVEL_LOSE)
 		{
 			string endText = "Good game, " + playerData.PlayerName + "!\n Your score is: " + playerData.PlayerResultScore;
 			
 			transform.Find("EndGameText").GetComponent<Text>().text = endText;
+
+			leaderBoard.SetActive(true);
 		}
 	}
 }

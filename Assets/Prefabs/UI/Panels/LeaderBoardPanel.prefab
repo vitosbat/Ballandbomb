@@ -262,15 +262,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 140571657467510750}
     m_Modifications:
+    - target: {fileID: 1135520034885437127, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1263593334467266634, guid: d1e8a8d8cf7c810448f2022750148239,
         type: 3}
       propertyPath: m_Name
       value: LeaderBoardTable
       objectReference: {fileID: 0}
+    - target: {fileID: 1319932792755946754, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_Text
+      value: Loading...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304411886614682289, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2675726962861701809, guid: d1e8a8d8cf7c810448f2022750148239,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995016737689864231, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 297.18616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995016737689864231, guid: d1e8a8d8cf7c810448f2022750148239,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -41.233
       objectReference: {fileID: 0}
     - target: {fileID: 8897393818256877945, guid: d1e8a8d8cf7c810448f2022750148239,
         type: 3}

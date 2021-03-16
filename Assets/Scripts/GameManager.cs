@@ -158,16 +158,16 @@ public class GameManager : Singleton<GameManager>
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
+				
 				// Update Leaderboard
-				//leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
 				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
 
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
+				
 				// Update Leaderboard
-				// leaderboard.AddResultToLeaderBoard(playerInfo.PlayerName, playerInfo.PlayerResultScore);
 				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
 

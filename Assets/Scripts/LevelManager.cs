@@ -179,7 +179,6 @@ public class LevelManager : Singleton<LevelManager>
 				// Stop spawning new targets
 				StopCoroutine(SpawnTarget());
 
-
 				playerInfo.PlayerResultScore += levelData.WinScore;
 				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
@@ -198,7 +197,6 @@ public class LevelManager : Singleton<LevelManager>
 			// Defeat condition
 			if (currentScore <= levelData.LoseScore)
 			{
-				Debug.Log("You lost.");
 				StopCoroutine(SpawnTarget());
 
 				playerInfo.PlayerResultScore += maxLevelScore;
