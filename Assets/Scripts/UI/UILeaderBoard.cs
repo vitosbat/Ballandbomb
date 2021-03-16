@@ -7,14 +7,13 @@ public class UILeaderBoard : MonoBehaviour
 {
 	BackendManager backendManager;
 
+	[SerializeField] PlayerSO playerInfo;
+
 	// Leaderboard table UI object
-	 private Transform leaderboardTable;
+	private Transform leaderboardTable;
 
 	// UI template of line in Leaderboard object
-	 private Transform leaderboardLine;
-
-	// List of player highscores data
-	//private List<PlayerResult> leaderBoard;
+	private Transform leaderboardLine;
 
 	// List of UI lines in Leaderboard
 	private List<Transform> leaderBoardTransformList;
@@ -69,7 +68,7 @@ public class UILeaderBoard : MonoBehaviour
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
 		//Transform leaderboardTableWrapper = 
-		leaderboardTable = transform.Find("LeaderBoardTable"); 
+		leaderboardTable = transform.Find("LeaderBoardTable");
 		//leaderboardTableWrapper.Find("Table");
 
 		leaderboardLine = leaderboardTable.Find("Line");
@@ -99,19 +98,31 @@ public class UILeaderBoard : MonoBehaviour
 		RectTransform lineRectTransform = lineTransform.GetComponent<RectTransform>();
 
 		lineRectTransform.anchoredPosition += new Vector2(0, -templateHeight * transformList.Count);
+
 		lineTransform.gameObject.SetActive(true);
 
+		// Put player position to line
 		int place = (transformList.Count + 1);
 		lineTransform.Find("Place").GetComponent<Text>().text = place.ToString();
 
+		// Put player name to line if exists; if not - put "anonymous" name
 		string name = result.playerName;
+		
+		if (name == "" || name == null)
+		{
+			name = playerInfo.DefaultPlayerName;
+		}
+		
 		lineTransform.Find("Name").GetComponent<Text>().text = name;
 
+		// Put player result score to line
 		int score = result.playerScore;
 		lineTransform.Find("Score").GetComponent<Text>().text = score.ToString();
 
+		// Added color differentiation between lines
 		lineTransform.Find("LineBackground").gameObject.SetActive(place % 2 != 1);
 
+		// Bold font to the top-3 positions
 		if (place == 1 || place == 2 || place == 3)
 		{
 			lineTransform.Find("Place").GetComponent<Text>().fontStyle = FontStyle.Bold;
@@ -120,7 +131,6 @@ public class UILeaderBoard : MonoBehaviour
 		}
 
 		transformList.Add(lineTransform);
-
 	}
 
 	// States of Leaderboard UI

@@ -17,7 +17,6 @@ public class UIStartMenu : MonoBehaviour
 		gameObject.SetActive(currentGameState == GameManager.GameState.START);
 	}
 
-
 	public void GameStartButtonDownHandler()
 	{
 		gameManager.StartGame();

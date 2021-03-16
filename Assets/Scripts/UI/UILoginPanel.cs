@@ -6,8 +6,6 @@ using TMPro;
 
 public class UILoginPanel : MonoBehaviour
 {
-	GameManager gameManager;
-
 	BackendManager backendManager;
 
 	Transform warningMessage;
@@ -17,7 +15,6 @@ public class UILoginPanel : MonoBehaviour
 
 	private void Start()
 	{
-		gameManager = GameManager.Instance;
 		backendManager = BackendManager.Instance;
 		
 		backendManager.OnLoginSuccessEvent.AddListener(HideLoginPanel);

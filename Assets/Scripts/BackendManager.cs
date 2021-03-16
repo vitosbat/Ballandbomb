@@ -40,7 +40,6 @@ public class BackendManager : Singleton<BackendManager>
 				GetPlayerProfile = true,
 			}
 		};
-
 		PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnError);
 	}
 
@@ -53,7 +52,6 @@ public class BackendManager : Singleton<BackendManager>
 			Password = password
 		};
 		PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
-		Debug.Log("Login with email [" + email + "]request sent. ");
 	}
 
 	private void OnError(PlayFabError error)
@@ -105,7 +103,7 @@ public class BackendManager : Singleton<BackendManager>
 		}
 	}
 
-
+	#region Register
 	public void Register(string username, string email, string password)
 	{
 		if (password.Length < 6)
@@ -134,10 +132,7 @@ public class BackendManager : Singleton<BackendManager>
 
 		OnRegisterSuccessEvent.Invoke();
 	}
-
-
-
-
+	#endregion
 
 
 	#region Leaderboard management

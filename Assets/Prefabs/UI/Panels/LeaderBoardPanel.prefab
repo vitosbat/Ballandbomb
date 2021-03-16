@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a6d702b53b17a4ea58564c5251dde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: 11400000, guid: 678a5b442c8bdd94aa6afbf52e924d00, type: 2}
 --- !u!1 &1385871808358449135
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +458,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 15d812f94d099ef448a3632aec7840fa, type: 3}
+    m_Font: {fileID: 12800000, guid: 3952285f0d07b0543ad90a8a0380ff83, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -535,7 +536,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 15d812f94d099ef448a3632aec7840fa, type: 3}
+    m_Font: {fileID: 12800000, guid: 56b7fb18e2f34c643972eed011f7beba, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -649,7 +650,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 15d812f94d099ef448a3632aec7840fa, type: 3}
+    m_Font: {fileID: 12800000, guid: 3952285f0d07b0543ad90a8a0380ff83, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -779,6 +780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5253706302361730420, guid: b69d0a9ba1dce1247a3fb505c2d42b02,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7541050136665143411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69d0a9ba1dce1247a3fb505c2d42b02, type: 3}
 --- !u!224 &4852407402182751276 stripped
