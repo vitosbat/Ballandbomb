@@ -156,6 +156,7 @@ public class BackendManager : Singleton<BackendManager>
 	private void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
 	{
 		Debug.Log("Successful leaderboard updated.");
+
 		GetLeaderboard();
 	}
 
