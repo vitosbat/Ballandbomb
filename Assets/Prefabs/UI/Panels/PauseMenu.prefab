@@ -314,6 +314,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResumeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2588514317400857505, guid: ab9266dfac2e67648b390d754f5e02bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1743897342219918200}
+    - target: {fileID: 2588514317400857505, guid: ab9266dfac2e67648b390d754f5e02bb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeButtonDownHandler
+      objectReference: {fileID: 0}
     - target: {fileID: 6442378555298203420, guid: ab9266dfac2e67648b390d754f5e02bb,
         type: 3}
       propertyPath: m_Pivot.x
