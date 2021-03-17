@@ -21,9 +21,6 @@ public class GameManager : Singleton<GameManager>
 		set { currentGameState = value; }
 	}
 
-	// Backend manager
-	BackendManager backendManager;
-
 	// Player options
 	public PlayerSO playerInfo;
 	
@@ -56,9 +53,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		DontDestroyOnLoad(gameObject);
 
-		backendManager = BackendManager.Instance;
-		
-		// Set player name as 'anonym' before login
+		// Set player name as 'anonym' if not login
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
 
 		// Instantiates prefabs that will exist all the game session time
@@ -162,24 +157,18 @@ public class GameManager : Singleton<GameManager>
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
-				
-				// Update Leaderboard
-				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
 
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
-				
-				// Update Leaderboard
-				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
-				break;
+break;
 
 			default:
 				break;
 		}
 
-		// Event trigger about game state changes
+		// Event trigger of game state changes
 		OnGameStateChanged.Invoke(currentGameState, previousGameState);
 	}
 
