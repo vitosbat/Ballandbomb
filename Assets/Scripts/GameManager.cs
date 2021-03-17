@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using System;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -30,10 +33,14 @@ public class GameManager : Singleton<GameManager>
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
 	private List<GameObject> instancedInitialPrefabs;
+
+	// Current level scene instance
+	private AsyncOperationHandle<SceneInstance> handle;
 	
-	// Level order control
+	// Start level name for order control (will move to settings in future)
 	private readonly string firstLevelName = "Level1";
-	
+
+	// Name of the scene of the current loaded level
 	private string currentLevel = string.Empty;
 	public string CurrentLevel
 	{
@@ -41,21 +48,13 @@ public class GameManager : Singleton<GameManager>
 		set { }
 	}
 
-	// Backend manager
-	BackendManager backendManager;
-
-	// Leaderboard data manager
-	//LeaderboardManager leaderboard;
-
-
+	#region Game initialize
 	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 
+		// Set player name as 'anonym' if not login
 		playerInfo.PlayerName = playerInfo.DefaultPlayerName;
-		
-		//leaderboard = LeaderboardManager.Instance;
-		backendManager = BackendManager.Instance;
 
 		// Instantiates prefabs that will exist all the game session time
 		instancedInitialPrefabs = new List<GameObject>();
@@ -86,46 +85,46 @@ public class GameManager : Singleton<GameManager>
 		instancedInitialPrefabs.Clear();
 	}
 
+	#endregion
+
+	#region Scene Management
+
 	// Level scene loading function.
 	void LoadLevel(string level)
 	{
-		AsyncOperation levelLoading = SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
-		
-		if (levelLoading == null)
-		{
-			Debug.LogError("[Game Manager] unable to load level " + level);
-			return;
-		}
-
-		StartCoroutine(WaitForSceneLoad(SceneManager.GetSceneByName(level), level));
+		Addressables.LoadSceneAsync(level, LoadSceneMode.Additive).Completed += LoadLevelCompleted;
 	}
 
-	private IEnumerator WaitForSceneLoad(Scene scene, string levelName)
+	private void LoadLevelCompleted(AsyncOperationHandle<SceneInstance> obj)
 	{
-		while (!scene.isLoaded)
+		if (obj.Status == AsyncOperationStatus.Succeeded)
 		{
-			yield return null;
-		}
-		
-		SceneManager.SetActiveScene(scene);
-		
-		currentLevel = levelName;
+			Debug.Log(obj.Result.Scene.name + " successfully loaded");
 
-		OnSceneLoaded.Invoke(currentLevel);
+			handle = obj;
+
+			SceneManager.SetActiveScene(obj.Result.Scene);
+
+			currentLevel = obj.Result.Scene.name;
+
+			OnSceneLoaded.Invoke(currentLevel);
+		}
 	}
 
 	// Level scene unloading function.
 	void UnloadLevel (string level)
 	{
-		AsyncOperation levelUnloading = SceneManager.UnloadSceneAsync(level);
-		
-		if (levelUnloading == null)
+		Addressables.UnloadSceneAsync(handle, true).Completed += op =>
 		{
-			Debug.LogError("[Game Manager] unable to unload level " + level);
-			return;
-		}
+			if (op.Status == AsyncOperationStatus.Succeeded)
+			{
+				Debug.Log("Successfully unload " + currentLevel);
+			}
+		};
 	}
-	
+	#endregion
+
+
 	// The main function of the game state updating
 	public void UpdateState(GameState state)
 	{
@@ -158,27 +157,21 @@ public class GameManager : Singleton<GameManager>
 			case GameState.ENDLEVEL_LOSE:
 				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
-				
-				// Update Leaderboard
-				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
 				break;
 
 			case GameState.FINAL:
 				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
-				
-				// Update Leaderboard
-				backendManager.UpdateLeaderboard(playerInfo.PlayerResultScore);
-				break;
+break;
 
 			default:
 				break;
 		}
 
-		// Event trigger about game state changes
+		// Event trigger of game state changes
 		OnGameStateChanged.Invoke(currentGameState, previousGameState);
-
 	}
+
 
 	public void StartGame ()
 	{
@@ -207,7 +200,6 @@ public class GameManager : Singleton<GameManager>
 			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
 		}
 	}
-
 
 	public void QuitGame ()
 	{

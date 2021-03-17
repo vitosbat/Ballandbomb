@@ -7,6 +7,8 @@ using System;
 
 public class BackendManager : Singleton<BackendManager>
 {
+	GameManager gameManager;
+
 	// Player data scriptable object
 	[SerializeField] PlayerSO playerInfo;
 
@@ -25,7 +27,21 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void Start()
 	{
+		gameManager = GameManager.Instance;
+		gameManager.OnGameStateChanged.AddListener(GameStateChangesHandler);
+
+		// Start user session via deviceID login (anonymous)
 		Login();
+	}
+
+	// Handle the game state changing
+	private void GameStateChangesHandler(GameManager.GameState currentState, GameManager.GameState previousState)
+	{
+		// Update the leaderboard after game ending
+		if (currentState == GameManager.GameState.ENDLEVEL_LOSE || currentState == GameManager.GameState.FINAL)
+		{
+			UpdateLeaderboard(playerInfo.PlayerResultScore);
+		}
 	}
 
 	// Start anonymous user session using deviceID
