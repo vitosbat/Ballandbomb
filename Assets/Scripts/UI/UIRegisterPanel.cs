@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.Events;
-//using System;
 using TMPro;
+using System.Collections.Generic;
 
 public class UIRegisterPanel : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class UIRegisterPanel : MonoBehaviour
     public InputField emailInputField;
     public InputField passwordInputField;
 
+	// Declare the list of input fields that will use the TAB key navigation
+	private List<InputField> tabNavigateList;
+	private int tabNavigateListIndex;
+
 	void Start()
     {
 		gameManager = GameManager.Instance;
@@ -25,7 +28,28 @@ public class UIRegisterPanel : MonoBehaviour
 
 		warningMessage = transform.Find("WarningText");
 
+		// Initiates list of input fields that will use the TAB key navigation
+		tabNavigateList = new List<InputField> { nameInputField, emailInputField, passwordInputField };
+
+		// Set cursor on first input field
+		nameInputField.Select();
+		tabNavigateListIndex = 0;
+
 		HideRegisterPanel();
+	}
+
+	private void Update()
+	{
+		// Implements TAB key navigation between input fields of Login form
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			if (tabNavigateListIndex + 1 >= tabNavigateList.Count)
+			{
+				tabNavigateListIndex = -1;
+			}
+			tabNavigateListIndex++;
+			tabNavigateList[tabNavigateListIndex].Select();
+		}
 	}
 
 	private void WarningMessageHandler(string message)
@@ -53,13 +77,18 @@ public class UIRegisterPanel : MonoBehaviour
 
 	public void ShowRegisterPanel()
 	{
-		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
 		gameObject.SetActive(true);
+
+		// Set cursor to the first input field
+		nameInputField.Select();
+		tabNavigateListIndex = 0;
 	}
 
 	public void HideRegisterPanel()
 	{
+		// Clear the warning messages
 		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
+
 		gameObject.SetActive(false);
 	}
 }

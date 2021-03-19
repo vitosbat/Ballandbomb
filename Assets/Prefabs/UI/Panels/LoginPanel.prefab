@@ -145,6 +145,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6089444756880267374, guid: 724c3e40133bbe046bc36f082ac86652,
         type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089444756880267374, guid: 724c3e40133bbe046bc36f082ac86652,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -316,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 4697100873806768257, guid: d9e612257d3c4b047b4741142388fefe,
         type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4988301326790864884, guid: d9e612257d3c4b047b4741142388fefe,
         type: 3}
@@ -594,6 +599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PasswordInputField
+      objectReference: {fileID: 0}
+    - target: {fileID: 644985168870785932, guid: 64992500cd85733429273c8dd97283d6,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1084232382090680562, guid: 64992500cd85733429273c8dd97283d6,
         type: 3}
@@ -890,6 +900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810666065144998860, guid: e26922a74b61ee549a381279f4244c90,
         type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810666065144998860, guid: e26922a74b61ee549a381279f4244c90,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5639205788896148382}
@@ -1142,6 +1157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CloseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253706302361730420, guid: b69d0a9ba1dce1247a3fb505c2d42b02,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5253706302361730420, guid: b69d0a9ba1dce1247a3fb505c2d42b02,
         type: 3}
