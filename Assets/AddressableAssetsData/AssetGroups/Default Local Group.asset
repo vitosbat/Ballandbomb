@@ -83,6 +83,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 102900000, guid: 85a3130fb5b624f46acf6e6b3dc43f2e, type: 3}
     m_TargetAsset: {fileID: 102900000, guid: 85a3130fb5b624f46acf6e6b3dc43f2e, type: 3}
+  - m_GUID: da3dbd5f584f3c141bb1837b0b2067e8
+    m_Address: LevelData/Level6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: da3dbd5f584f3c141bb1837b0b2067e8, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: da3dbd5f584f3c141bb1837b0b2067e8, type: 2}
+  - m_GUID: f1823c2c511b824448b4be8a5acb9d0d
+    m_Address: Level6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: f1823c2c511b824448b4be8a5acb9d0d, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: f1823c2c511b824448b4be8a5acb9d0d, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74227f423ecf2d34a8fd0bf001342376, type: 2}
   m_SchemaSet:

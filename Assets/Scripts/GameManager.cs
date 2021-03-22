@@ -37,8 +37,8 @@ public class GameManager : Singleton<GameManager>
 	// Current level scene instance
 	private AsyncOperationHandle<SceneInstance> handle;
 	
-	// Start level name for order control (will move to settings in future)
-	private readonly string firstLevelName = "Level5";
+	// Start level name for order control (move to settings in future)
+	private readonly string firstLevelName = "Level1";
 
 	// Name of the scene of the current loaded level
 	private string currentLevel = string.Empty;
