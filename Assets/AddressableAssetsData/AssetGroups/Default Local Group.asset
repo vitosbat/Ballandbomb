@@ -95,6 +95,18 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 102900000, guid: f1823c2c511b824448b4be8a5acb9d0d, type: 3}
     m_TargetAsset: {fileID: 102900000, guid: f1823c2c511b824448b4be8a5acb9d0d, type: 3}
+  - m_GUID: 465f5d4883c112c4fb7e052201156262
+    m_Address: LevelData/Level7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: 465f5d4883c112c4fb7e052201156262, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 465f5d4883c112c4fb7e052201156262, type: 2}
+  - m_GUID: 985c8f5b475bd4447a52e3ed4fe5b979
+    m_Address: Level7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 985c8f5b475bd4447a52e3ed4fe5b979, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 985c8f5b475bd4447a52e3ed4fe5b979, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 74227f423ecf2d34a8fd0bf001342376, type: 2}
   m_SchemaSet:
