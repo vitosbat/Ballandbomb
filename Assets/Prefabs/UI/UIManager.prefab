@@ -1102,12 +1102,12 @@ PrefabInstance:
     - target: {fileID: 3793591345124475127, guid: aacdea99bd5f93d49ae5d20d0bb00656,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -45.457764
+      value: -45.458008
       objectReference: {fileID: 0}
     - target: {fileID: 3793591345124475127, guid: aacdea99bd5f93d49ae5d20d0bb00656,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -38.210815
+      value: -38.210938
       objectReference: {fileID: 0}
     - target: {fileID: 3793591345124475127, guid: aacdea99bd5f93d49ae5d20d0bb00656,
         type: 3}
@@ -1139,20 +1139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6765635078370972508}
     m_Modifications:
-    - target: {fileID: 824456302747600136, guid: 01ac24d85c3d1ba4db15fdc38457339d,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7604161432069163816, guid: 01ac24d85c3d1ba4db15fdc38457339d,
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7604161432069163816, guid: 01ac24d85c3d1ba4db15fdc38457339d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8366240961630867964, guid: 01ac24d85c3d1ba4db15fdc38457339d,
         type: 3}
