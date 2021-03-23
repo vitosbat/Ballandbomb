@@ -29,6 +29,6 @@ MonoBehaviour:
   maxXForceValue: 0
   minYForceValue: 0
   maxYForceValue: 0
-  startScore: 0
-  winScore: 200
-  loseScore: -100
+  startScore: 20
+  winScore: 100
+  loseScore: 0

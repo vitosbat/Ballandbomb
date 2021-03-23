@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UILifeSlider : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class UILifeSlider : MonoBehaviour
 	LevelManager levelManager;
 
 	[SerializeField] Slider lifeSlider;
+	[SerializeField] GameObject scoreText;
 
 
 	private void Start()
@@ -31,5 +33,6 @@ public class UILifeSlider : MonoBehaviour
 	public void ScoreChangesHandler(int value)
 	{
 		lifeSlider.value = value;
+		scoreText.GetComponent<TextMeshProUGUI>().text = value + "%";
 	}
 }
