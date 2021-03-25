@@ -136,7 +136,7 @@ public class UILeaderBoard : MonoBehaviour
 		transformList.Add(lineTransform);
 	}
 
-	// States of Leaderboard UI
+	// State of view of Leaderboard UI
 	public void ShowLeaderBoard()
 	{
 		gameObject.SetActive(true);
