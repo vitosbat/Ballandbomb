@@ -120,7 +120,7 @@ public class LevelManager : Singleton<LevelManager>
 
 	void Update()
 	{
-		// This block includes cheatcodes and helps to test the game. It needs to delete in final version.
+		// This block includes cheatcodes and helps to test the game. It needs to delete in production.
 		// Victory condition - key "w".
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
@@ -129,7 +129,6 @@ public class LevelManager : Singleton<LevelManager>
 				StopCoroutine(SpawnTarget());
 
 				playerInfo.PlayerResultScore += maxLevelScore;
-				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				if (levelData.NextLevelName == "Final")
 				{
@@ -148,7 +147,6 @@ public class LevelManager : Singleton<LevelManager>
 				StopCoroutine(SpawnTarget());
 
 				playerInfo.PlayerResultScore += maxLevelScore;
-				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}
@@ -161,7 +159,6 @@ public class LevelManager : Singleton<LevelManager>
 		if (gameManager.CurrentGameState == GameManager.GameState.GAMEPLAY)
 		{
 			currentScore += score;
-			Debug.Log("Current score: " + currentScore);
 
 			OnScoreChangesEvent.Invoke(currentScore);
 
@@ -169,7 +166,6 @@ public class LevelManager : Singleton<LevelManager>
 			if (currentScore > maxLevelScore)
 			{
 				maxLevelScore += currentScore - maxLevelScore;
-				Debug.Log("Max level score: " + maxLevelScore);
 			}
 
 			// Victory condition
@@ -179,11 +175,10 @@ public class LevelManager : Singleton<LevelManager>
 				StopCoroutine(SpawnTarget());
 
 				playerInfo.PlayerResultScore += levelData.WinScore;
-				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				if (levelData.NextLevelName == "Final")
 				{
-					// Immediate start final scene, without EndLevel Menu
+					// Immediate start Final scene, instead End Game Panel
 					gameManager.UpdateState(GameManager.GameState.FINAL);
 					gameManager.StartFinalScreen();
 				}
@@ -199,7 +194,6 @@ public class LevelManager : Singleton<LevelManager>
 				StopCoroutine(SpawnTarget());
 
 				playerInfo.PlayerResultScore += maxLevelScore;
-				Debug.Log("Result score: " + playerInfo.PlayerResultScore);
 
 				gameManager.UpdateState(GameManager.GameState.ENDLEVEL_LOSE);
 			}

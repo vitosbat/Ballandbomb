@@ -12,7 +12,7 @@ using System;
 public class GameManager : Singleton<GameManager>
 {
 	// Game States logics
-	public enum GameState {START, GAMEPLAY, PAUSE, ENDLEVEL_WIN, ENDLEVEL_LOSE, FINAL}
+	public enum GameState { START, GAMEPLAY, PAUSE, ENDLEVEL_WIN, ENDLEVEL_LOSE, FINAL }
 
 	GameState currentGameState = GameState.START;
 	public GameState CurrentGameState
@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
 
 	// Player options
 	public PlayerSO playerInfo;
-	
+
 	// The event that will invoke after the game state was changing
 	public GameEvents.EventGameState OnGameStateChanged;
 
@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
 
 	// Current level scene instance
 	private AsyncOperationHandle<SceneInstance> handle;
-	
+
 	// Start level name for order control (move to settings in future)
 	private readonly string firstLevelName = "Level 1";
 
@@ -58,14 +58,14 @@ public class GameManager : Singleton<GameManager>
 
 		// Instantiates prefabs that will exist all the game session time
 		instancedInitialPrefabs = new List<GameObject>();
-		
+
 		InstantiateInitialPrefabs();
 	}
-	
+
 	private void InstantiateInitialPrefabs()
 	{
 		GameObject prefabInstance;
-		
+
 		for (int i = 0; i < initialPrefabs.Length; i++)
 		{
 			prefabInstance = Instantiate(initialPrefabs[i]);
@@ -99,8 +99,6 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (obj.Status == AsyncOperationStatus.Succeeded)
 		{
-			Debug.Log(obj.Result.Scene.name + " successfully loaded");
-
 			handle = obj;
 
 			SceneManager.SetActiveScene(obj.Result.Scene);
@@ -112,7 +110,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	// Level scene unloading function.
-	void UnloadLevel (string level)
+	void UnloadLevel(string level)
 	{
 		Addressables.UnloadSceneAsync(handle, true).Completed += op =>
 		{
@@ -134,35 +132,29 @@ public class GameManager : Singleton<GameManager>
 		switch (currentGameState)
 		{
 			case GameState.START:
-				Debug.Log("Update State: START");
 				Time.timeScale = 1.0f;
 				UnloadLevel(currentLevel);
 				break;
 
 			case GameState.GAMEPLAY:
-				Debug.Log("Update State: GAMEPLAY");
 				Time.timeScale = 1.0f;
 				break;
 
 			case GameState.PAUSE:
-				Debug.Log("Update State: PAUSE");
 				Time.timeScale = 0.0f;
 				break;
 
 			case GameState.ENDLEVEL_WIN:
-				Debug.Log("Update State: ENDLEVEL_WIN");
 				Time.timeScale = 1.0f;
 				break;
 
 			case GameState.ENDLEVEL_LOSE:
-				Debug.Log("Update State: ENDLEVEL_LOSE");
 				Time.timeScale = 1.0f;
 				break;
 
 			case GameState.FINAL:
-				Debug.Log("Update State: FINAL");
 				Time.timeScale = 1.0f;
-break;
+				break;
 
 			default:
 				break;
@@ -173,7 +165,7 @@ break;
 	}
 
 
-	public void StartGame ()
+	public void StartGame()
 	{
 		playerInfo.PlayerResultScore = playerInfo.DefaultPlayerResultScore;
 
@@ -201,7 +193,7 @@ break;
 		}
 	}
 
-	public void QuitGame ()
+	public void QuitGame()
 	{
 		Application.Quit();
 	}

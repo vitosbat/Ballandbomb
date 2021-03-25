@@ -102,7 +102,6 @@ public class BackendManager : Singleton<BackendManager>
 		if (accountInfo.AccountInfo.TitleInfo != null)
 		{
 			displayName = accountInfo.AccountInfo.TitleInfo.DisplayName;
-			Debug.Log("Display name: " + displayName);
 		}
 
 		if (displayName == "" || displayName == null)
@@ -125,7 +124,6 @@ public class BackendManager : Singleton<BackendManager>
 		if (password.Length < 6)
 		{
 			OnWarningMessageSent.Invoke("Password too short. Minimum 6 characters.");
-			Debug.Log("Password too short. Minimum 6 characters.");
 
 			return;
 		}
@@ -171,8 +169,6 @@ public class BackendManager : Singleton<BackendManager>
 
 	private void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
 	{
-		Debug.Log("Successful leaderboard updated.");
-
 		GetLeaderboard();
 	}
 
