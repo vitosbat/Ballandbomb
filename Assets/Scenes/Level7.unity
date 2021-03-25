@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small_Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7836116247337069227, guid: c796f9f041931244f9a8dc38ffade03f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_RootOrder
@@ -146,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.15
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
@@ -264,7 +269,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.88e-43, y: 1.39e-43, z: 0, w: -0.0000000048812474}
+  m_BoundingSphereOverride: {x: 0, y: 1.9377e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -650,6 +655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small_Wall 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7836116247337069227, guid: c796f9f041931244f9a8dc38ffade03f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_RootOrder
@@ -663,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.15
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
@@ -719,6 +729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small_Wall 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7836116247337069227, guid: c796f9f041931244f9a8dc38ffade03f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_RootOrder
@@ -732,7 +747,7 @@ PrefabInstance:
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.67
+      value: 3.46
       objectReference: {fileID: 0}
     - target: {fileID: 7836116247337069231, guid: c796f9f041931244f9a8dc38ffade03f,
         type: 3}

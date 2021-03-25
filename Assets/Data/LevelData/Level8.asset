@@ -25,9 +25,9 @@ MonoBehaviour:
   minYSpawnPosition: 7
   maxYSpawnPosition: 7
   torqueRange: 6
-  minXForceValue: -6
-  maxXForceValue: 6
-  minYForceValue: -2
+  minXForceValue: -8
+  maxXForceValue: 8
+  minYForceValue: -3
   maxYForceValue: 0
   startScore: 20
   winScore: 100
