@@ -262,15 +262,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6765635078370972508}
     m_Modifications:
+    - target: {fileID: 3766240473660096717, guid: 221b9141ac41e964986d6bf35dfc3133,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 4550239302054651238, guid: 221b9141ac41e964986d6bf35dfc3133,
         type: 3}
       propertyPath: m_Name
       value: FinalMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 4550239302054651238, guid: 221b9141ac41e964986d6bf35dfc3133,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5439888883982807305, guid: 221b9141ac41e964986d6bf35dfc3133,
         type: 3}
@@ -376,6 +376,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586117162720317925, guid: 221b9141ac41e964986d6bf35dfc3133,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6795244441502622593}
+    - target: {fileID: 7586117162720317925, guid: 221b9141ac41e964986d6bf35dfc3133,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowLeaderBoard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221b9141ac41e964986d6bf35dfc3133, type: 3}
@@ -850,6 +860,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6765635078370972508}
     m_Modifications:
+    - target: {fileID: 1150225626797513946, guid: cc144201bbaea274fa7f6614634d8928,
+        type: 3}
+      propertyPath: m_Text
+      value: "Good game, Anonymous! \n"
+      objectReference: {fileID: 0}
     - target: {fileID: 3907181238314178930, guid: cc144201bbaea274fa7f6614634d8928,
         type: 3}
       propertyPath: m_Name
@@ -1249,6 +1264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628424832415639458, guid: aacdea99bd5f93d49ae5d20d0bb00656,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793591345124475127, guid: aacdea99bd5f93d49ae5d20d0bb00656,
         type: 3}
