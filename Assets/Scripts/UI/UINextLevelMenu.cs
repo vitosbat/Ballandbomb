@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UINextLevelMenu : MonoBehaviour
 {
     GameManager gameManager;
+
+    [SerializeField] Text winLevelText;
     
     void Start()
     {
@@ -17,6 +20,8 @@ public class UINextLevelMenu : MonoBehaviour
     private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
     {
         gameObject.SetActive(currentGameState == GameManager.GameState.ENDLEVEL_WIN);
+
+        winLevelText.text = "Perfect!\n " + GameManager.Instance.CurrentLevel + " completed.";
     }
 
     public void NextLevelButtonHandler()
