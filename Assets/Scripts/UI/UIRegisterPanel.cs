@@ -79,6 +79,9 @@ public class UIRegisterPanel : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 
+		// Clear the warning messages
+		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
+
 		// Set cursor to the first input field
 		nameInputField.Select();
 		tabNavigateListIndex = 0;

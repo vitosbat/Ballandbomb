@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4550239302054651238, guid: 221b9141ac41e964986d6bf35dfc3133,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5439888883982807305, guid: 221b9141ac41e964986d6bf35dfc3133,
         type: 3}
       propertyPath: m_Pivot.x
@@ -407,6 +412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndGameMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4550239302054651238, guid: 97e971e4483461c46a58317ed7a8aac5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5439888883982807305, guid: 97e971e4483461c46a58317ed7a8aac5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -537,25 +547,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2716395904092156885}
-    - target: {fileID: 302853106288894852, guid: 6fe99da1395e3604ebd01c7faa584d32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowLoginPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 337715549144454206, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
       propertyPath: m_Name
       value: StartMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 337715549144454206, guid: 6fe99da1395e3604ebd01c7faa584d32,
+    - target: {fileID: 3073218997163885453, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_text
+      value: anonymous
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073218997163885453, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073218997163885453, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2433334490685470755, guid: 6fe99da1395e3604ebd01c7faa584d32,
+    - target: {fileID: 3073218997163885453, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
-      propertyPath: m_Color.a
-      value: 1
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073218997163885453, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971697169286045998, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -295
       objectReference: {fileID: 0}
     - target: {fileID: 6971697169286045998, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
@@ -672,11 +697,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6795244441502622593}
-    - target: {fileID: 9164599245823706325, guid: 6fe99da1395e3604ebd01c7faa584d32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowLeaderBoard
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe99da1395e3604ebd01c7faa584d32, type: 3}
 --- !u!224 &6451176929220006400 stripped

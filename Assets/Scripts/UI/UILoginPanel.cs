@@ -64,6 +64,9 @@ public class UILoginPanel : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 
+		// Clear the warning messages
+		warningMessage.GetComponent<TextMeshProUGUI>().text = "";
+
 		// Set cursor to the first input field
 		emailInputField.Select();
 		tabNavigateListIndex = 0;
