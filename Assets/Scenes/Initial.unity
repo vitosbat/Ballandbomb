@@ -274,3 +274,6 @@ MonoBehaviour:
   OnLoginSuccessEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnLeaderboardDataFormed:
+    m_PersistentCalls:
+      m_Calls: []
