@@ -14,6 +14,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
 	private void Start()
 	{
 		levelManager = LevelManager.Instance;
+		levelManager.OnLevelDataLoadedEvent.AddListener(LevelDataLoadedHandler);
 	}
 
 	public void LevelDataLoadedHandler()

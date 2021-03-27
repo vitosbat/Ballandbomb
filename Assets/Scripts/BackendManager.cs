@@ -13,17 +13,17 @@ public class BackendManager : Singleton<BackendManager>
 	[SerializeField] PlayerSO playerInfo;
 
 	// Enent invoked when player name changed after login
-	public GameEvents.StringParameterEvent OnPlayerNameChanged;
+	[HideInInspector] public GameEvents.StringParameterEvent OnPlayerNameChanged;
 
 	// Event sent the warning messages of login/register process
-	public GameEvents.StringParameterEvent OnWarningMessageSent;
+	[HideInInspector] public GameEvents.StringParameterEvent OnWarningMessageSent;
 
 	// Events invoked after Player has successfully registered/logged in
-	public UnityEvent OnRegisterSuccessEvent;
-	public UnityEvent OnLoginSuccessEvent;
+	[HideInInspector] public UnityEvent OnRegisterSuccessEvent;
+	[HideInInspector] public UnityEvent OnLoginSuccessEvent;
 
 	// Event 
-	public GameEvents.EventLeaderboard OnLeaderboardDataFormed;
+	[HideInInspector] public GameEvents.EventLeaderboard OnLeaderboardDataFormed;
 
 	private void Start()
 	{

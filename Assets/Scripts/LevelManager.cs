@@ -20,14 +20,15 @@ public class LevelManager : Singleton<LevelManager>
 	// List of target object that populate from LevelData SO
 	private List<GameObject> targets;
 
+	// Scoring
 	int currentScore;
 	int maxLevelScore;
 
 	// Event invoked after every score updating
-	public GameEvents.IntParameterEvent OnScoreChangesEvent;
+	[HideInInspector] public GameEvents.IntParameterEvent OnScoreChangesEvent;
 
 	// Event invoked after Level Data loaded from scriptable object
-	public UnityEvent OnLevelDataLoadedEvent;
+	[HideInInspector] public UnityEvent OnLevelDataLoadedEvent;
 	
 
 	void Start()

@@ -1,13 +1,9 @@
-﻿// using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
-using System;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -25,10 +21,10 @@ public class GameManager : Singleton<GameManager>
 	public PlayerSO playerInfo;
 
 	// The event that will invoke after the game state was changing
-	public GameEvents.EventGameState OnGameStateChanged;
+	[HideInInspector] public GameEvents.EventGameState OnGameStateChanged;
 
 	// The event that will invoke after the Scene loaded to start LevelData loading in LevelManager, etc.
-	public GameEvents.StringParameterEvent OnSceneLoaded;
+	[HideInInspector] public GameEvents.StringParameterEvent OnSceneLoaded;
 
 	// Initiate the assets in initial scene 
 	public GameObject[] initialPrefabs;
