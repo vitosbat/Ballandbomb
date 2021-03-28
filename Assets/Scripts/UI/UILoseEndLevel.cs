@@ -25,7 +25,7 @@ public class UILoseEndLevel : MonoBehaviour
 		// Creates Game end text with players name and his final score
 		if (currentGameState == GameManager.GameState.ENDLEVEL_LOSE)
 		{
-			string endText = playerData.PlayerName + ", your result: " + playerData.PlayerResultScore + ".";
+			string endText = "Good Game, " + playerData.PlayerName + "! Score: " + playerData.PlayerResultScore + ".";
 			
 			transform.Find("EndGameText").GetComponent<Text>().text = endText;
 		}
