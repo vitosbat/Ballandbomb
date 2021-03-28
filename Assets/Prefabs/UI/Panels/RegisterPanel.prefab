@@ -842,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 5461628549569874259, guid: e66aafcfb71997041a90f87cbc7c512d,
         type: 3}
       propertyPath: m_Text
-      value: Register
+      value: REGISTER
       objectReference: {fileID: 0}
     - target: {fileID: 5461628549569874259, guid: e66aafcfb71997041a90f87cbc7c512d,
         type: 3}

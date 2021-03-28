@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Anonymous'
+  m_text: ' anonymous'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6b20be51ee253a4c9d2f0324ea58536, type: 2}
   m_sharedMaterial: {fileID: -1154724147426978864, guid: f6b20be51ee253a4c9d2f0324ea58536,
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283914109
-  m_fontColor: {r: 0.49056602, g: 0.34015664, b: 0.34015664, a: 1}
+    rgba: 4285165991
+  m_fontColor: {r: 0.654902, g: 0.4431373, b: 0.4156863, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.3
+  m_fontSize: 24.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
