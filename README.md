@@ -3,13 +3,13 @@
 
 ### "Ball'n'bomb" - hyper-casual target shooting multiplatform game (beta).
 
-Current realese version - 1.0.4
+Current realese version - v1.0.4-beta
 
-Platforms:
+Test the game on convenient platform:
 
-Web - [Ball'n'bomb on Itch.io](https://vitosbat.itch.io/ballnbomb)
+Web - [Play online](https://vitosbat.itch.io/ballnbomb)
 
-Widows - 
+Windows - [ZIP file](https://disk.yandex.ru/d/1BApt2cG8wdVqg)
 
 Mac - 
 
