@@ -22,12 +22,11 @@ public class UIPauseMenu : MonoBehaviour
 	public void ResumeButtonDownHandler()
 	{
 		gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
-
 	}
 
 
-	public void QuitGameButtonDownHandler()
-	{
-		gameManager.QuitGame();
-	}
+	//public void QuitGameButtonDownHandler()
+	//{
+	//	gameManager.QuitGame();
+	//}
 }

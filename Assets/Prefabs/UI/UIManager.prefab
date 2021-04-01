@@ -652,6 +652,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5250324066951927611, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5318855379851751811, guid: d8fc7a500b0a8f143bd72e0897490c1d,
+        type: 3}
+    - target: {fileID: 5250324066951927611, guid: 6fe99da1395e3604ebd01c7faa584d32,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitButtonDownHandler
+      objectReference: {fileID: 0}
     - target: {fileID: 6971697169286045998, guid: 6fe99da1395e3604ebd01c7faa584d32,
         type: 3}
       propertyPath: m_AnchorMax.x
