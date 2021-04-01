@@ -13,11 +13,13 @@ public class UIPauseButton : MonoBehaviour
 		gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
 	}
 
+	// Show Pause button in GAMEPLAY state
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(currentGameState == GameManager.GameState.GAMEPLAY);
 	}
 
+	// Set the game state to PAUSE after pushing the Pause button
 	public void PauseButtonDownHandler()
 	{
 		gameManager.UpdateState(GameManager.GameState.PAUSE);

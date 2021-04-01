@@ -20,6 +20,7 @@ public class UILifeSlider : MonoBehaviour
 		levelManager.OnScoreChangesEvent.AddListener(ScoreChangesHandler);
 	}
 
+	// Show player LifeSlider in-game, pause, and in the game-ending
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(
@@ -30,6 +31,7 @@ public class UILifeSlider : MonoBehaviour
 			);
 	}
 
+	// Changes Lifeslider fill area and score text after score changed
 	public void ScoreChangesHandler(int value)
 	{
 		lifeSlider.value = value;

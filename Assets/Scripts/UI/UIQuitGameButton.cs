@@ -11,5 +11,4 @@ public class UIQuitGameButton : MonoBehaviour
 		gameManager = GameManager.Instance;
 		gameManager.QuitGame();
 	}
-
 }

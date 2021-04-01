@@ -13,20 +13,15 @@ public class UIPauseMenu : MonoBehaviour
 		gameManager.OnGameStateChanged.AddListener(GameStateChangedHandler);
 	}
 
+	// Activates the panel after game state set on PAUSE
 	private void GameStateChangedHandler(GameManager.GameState currentGameState, GameManager.GameState previousGameState)
 	{
 		gameObject.SetActive(currentGameState == GameManager.GameState.PAUSE);
 	}
 
-
+	// Back to GAMEPLAY state
 	public void ResumeButtonDownHandler()
 	{
 		gameManager.UpdateState(GameManager.GameState.GAMEPLAY);
 	}
-
-
-	//public void QuitGameButtonDownHandler()
-	//{
-	//	gameManager.QuitGame();
-	//}
 }

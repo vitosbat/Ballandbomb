@@ -19,7 +19,7 @@ public class UILeaderBoard : MonoBehaviour
 	private List<Transform> leaderBoardTransformList;
 
 	// Number of lines of player highscores in Leaderboard Table
-	private int numberOfHighscores = 10;
+	private readonly int numberOfHighscores = 10;
 
 
 	private void Awake()

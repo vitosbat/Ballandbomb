@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	// Level scene unloading function.
-	void UnloadLevel(string level)
+	void UnloadLevel()
 	{
 		Addressables.UnloadSceneAsync(handle, true).Completed += op =>
 		{
@@ -129,7 +129,7 @@ public class GameManager : Singleton<GameManager>
 		{
 			case GameState.START:
 				Time.timeScale = 1.0f;
-				UnloadLevel(currentLevel);
+				UnloadLevel();
 				break;
 
 			case GameState.GAMEPLAY:
@@ -172,7 +172,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (currentGameState == GameState.ENDLEVEL_WIN)
 		{
-			UnloadLevel(currentLevel);
+			UnloadLevel();
 
 			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
 
@@ -184,7 +184,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (currentGameState == GameState.FINAL)
 		{
-			UnloadLevel(currentLevel);
+			UnloadLevel();
 			LoadLevel(LevelManager.Instance.levelData.NextLevelName);
 		}
 	}
