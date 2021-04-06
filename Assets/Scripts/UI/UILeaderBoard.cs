@@ -70,9 +70,7 @@ public class UILeaderBoard : MonoBehaviour
 	// Create lines with users highscores in leaderboard table using "Line" template
 	public void CreateLeaderBoardTable(List<PlayerResult> leaderBoard)
 	{
-		//Transform leaderboardTableWrapper = 
 		leaderboardTable = transform.Find("LeaderBoardTable");
-		//leaderboardTableWrapper.Find("Table");
 
 		leaderboardLine = leaderboardTable.Find("Line");
 
