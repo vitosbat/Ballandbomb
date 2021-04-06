@@ -1,5 +1,5 @@
 
-<img src="https://github.com/vitosbat/ballandbomb/blob/main/Assets/Sprites/logo.png?raw=true " width="50%">
+<img src="https://github.com/vitosbat/ballandbomb/blob/main/Assets/Graph/Sprites/logo.png?raw=true " width="50%">
 
 ### "Ball'n'bomb" - hyper-casual target shooting multiplatform game (beta).
 
